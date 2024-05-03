@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SuperCat")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bc6ab0b578cd89968a01f5cf71f988e17b7f2ef9")]
 [assembly: System.Reflection.AssemblyProductAttribute("SuperCat")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SuperCat")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
