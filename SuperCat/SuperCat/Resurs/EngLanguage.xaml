@@ -1,0 +1,57 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:v ="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Log File -->
+    <v:String x:Key="WelcomHeader">Welcome to "Super Cat"</v:String>
+    <v:String x:Key="SignIn">Sign in</v:String>
+    <v:String x:Key="CreateAccount">Creat new account</v:String>
+    <v:String x:Key="lableNikname">Your Nikname</v:String>
+    <v:String x:Key="lablePassword">Your Password</v:String>
+    <v:String x:Key="NiknameOrPasswordError">Nikname or password entered incorrectly</v:String>
+    <v:String x:Key="ShowPasswordText">Show Password</v:String>
+
+    <!-- Create Account -->
+    <v:String x:Key="Createheader">Create Account</v:String>
+    <v:String x:Key="RegistrationNiknameBox">Your Nikname</v:String>
+    <v:String x:Key="RegistrationPasswordBox">Your Password</v:String>
+    <v:String x:Key="RegistrationRealNameBox">Your Real Name</v:String>
+    <v:String x:Key="RegistrationBirthdayBox">Your Birthday</v:String>
+    <v:String x:Key="RegistrationGenderBox">Your Gender</v:String>
+    <v:String x:Key="RegistrationEmailBox">Your e-mail</v:String>
+    <v:String x:Key="RegistrationInformationBox">Some Information About You</v:String>
+    <v:String x:Key="CreateButton">Create Account</v:String>
+    <v:String x:Key="MandatoryText">Mandatory Information</v:String>
+    <v:String x:Key="OptionalText">Optional Information</v:String>
+    <v:String x:Key="NextText">Next</v:String>
+    <v:String x:Key="NiknameError">This nikname already exist</v:String>
+    <v:String x:Key="SmallPasswordError">This password small</v:String>
+    <v:String x:Key="BigPasswordError">This password big</v:String>
+    <v:String x:Key="PasswordError">The password must contain number and symbols</v:String>
+    <v:String x:Key="SmallRealNameError">You name is too small</v:String>
+    <v:String x:Key="BigRealNameError">You name is too long</v:String>
+    <v:String x:Key="NumberRealNameError">The name cannot contain numbers</v:String>
+    <v:String x:Key="EmptyError">You have empty area</v:String>
+    <v:String x:Key="ProblemWithNikname">We have Problem with Nikname</v:String>
+    <v:String x:Key="ProblemWithPassword">We have Problem with Password</v:String>
+    <v:String x:Key="ProblemWithRealName">We have Problem with Real Name</v:String>
+    
+    <!-- End Create -->
+    <v:String x:Key="NeedBirthday">Birthday</v:String>
+    <v:String x:Key="NeedGenderText">Gender</v:String>
+    <v:String x:Key="NeedEmailText">E-mail</v:String>
+    <v:String x:Key="Day">Day</v:String>
+    <v:String x:Key="Month">Month</v:String>
+    <v:String x:Key="Year">Year</v:String>
+    <v:String x:Key="Man">Man</v:String>
+    <v:String x:Key="Woman">Woman</v:String>
+    <v:String x:Key="EmailError">Uncorrect E-mail (example SuperCat15@gmail.com)</v:String>
+
+    <!-- Lists -->
+    <v:String x:Key="RealName">Real Name:</v:String>
+    <v:String x:Key="Nickname">Nickname:</v:String>
+    <v:String x:Key="DataBirth">Years:</v:String>
+    <v:String x:Key="GenderText">Gender:</v:String>
+    <v:String x:Key="e-mail">e-mail:</v:String>
+    
+</ResourceDictionary>

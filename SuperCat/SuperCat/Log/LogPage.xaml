@@ -1,0 +1,192 @@
+﻿<Page x:Class="SuperCat.Log.LogPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SuperCat.Log"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LogPage"
+      Style="{DynamicResource MainFone}">
+
+    <Page.Resources>
+        <ControlTemplate x:Key="LogButtons" TargetType="Button">
+            <Border
+                x:Name="LogBut"
+                BorderBrush="Black"
+                BorderThickness="2"
+                CornerRadius="10"
+                Style="{DynamicResource LogButton}"
+                Cursor="Hand">
+                <ContentControl 
+                    x:Name="ButContent"
+                    Style="{DynamicResource ButtonContent}"
+                    FontSize="12"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="{DynamicResource SignIn}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding ElementName=niknameBox, Path=Text.Length}" Value="0"/>
+                    </MultiDataTrigger.Conditions>
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Setter TargetName="LogBut" Property="Background" Value="Gray"/>
+                </MultiDataTrigger>
+                <EventTrigger RoutedEvent="ButtonBase.Click">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetName="LogBut"
+                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                            To="#d44"
+                                            Duration="0:0:0:0.25"/>
+                            <ColorAnimation Storyboard.TargetName="LogBut"
+                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                            To="#55e"
+                                            BeginTime="0:0:0.5"
+                                            Duration="0:0:0:0.5"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="CreatButtons" TargetType="Button">
+            <Border
+                x:Name="CreateBut"
+                BorderBrush="Black"
+                BorderThickness="2"
+                CornerRadius="10"
+                Style="{DynamicResource LogButton}"
+                Cursor="Hand">
+                <ContentControl 
+                    x:Name="ButContent"
+                    Style="{DynamicResource ButtonContent}"
+                    FontSize="12"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="{DynamicResource CreateAccount}"/>
+            </Border>
+        </ControlTemplate>
+        <ControlTemplate x:Key="ShowPassword" TargetType="Button">
+            <Border
+                Style="{DynamicResource BorderInfo}"
+                BorderThickness="2"
+                CornerRadius="10">
+                <ContentControl
+                    Content="{DynamicResource ShowPasswordText}"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    FontSize="10"/>
+            </Border>
+        </ControlTemplate>
+    </Page.Resources>
+
+    <Viewbox>
+        <Grid x:Name="Located" Height="450" Width="800">
+
+            <Border
+                Margin="200,100,200,100"
+                BorderBrush="Black"
+                BorderThickness="1"
+                CornerRadius="31">
+                <Rectangle
+                RadiusX="30"
+                RadiusY="30"
+                Fill="#dedede"/>
+            </Border>
+
+
+            <Label 
+                x:Name="LogHeader"
+                Content="{DynamicResource WelcomHeader}"
+                Style="{DynamicResource LogerText}"
+                FontSize="20"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                Margin="0,110,0,0"/>
+
+            <Button                
+                x:Name="AlreadyHaveAcccount"
+                Margin="230,265,230,160"
+                Template="{DynamicResource LogButtons}" 
+                Click="LogInAccount"/>
+
+            <Button                
+                x:Name="CreateNewAccount"
+                Margin="230,305,230,120"
+                Template="{DynamicResource CreatButtons}" 
+                Click="CreateNewAccounts"/>
+
+            <Label
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                x:Name="ErrorLog"
+                Visibility="Hidden"
+                FontSize="12"
+                Margin="230,235,0,0"
+                Content="{DynamicResource NiknameOrPasswordError}"
+                Style="{DynamicResource ErrorText}"/>
+
+            <Label
+                x:Name="nikname"
+                Content="{DynamicResource lableNikname}"
+                Style="{DynamicResource LogerText}"
+                FontSize="15"
+                HorizontalAlignment="Left"
+                Margin="230,163,0,0" 
+                VerticalAlignment="Top"/>
+            <Label
+                x:Name="password"
+                Content="{DynamicResource lablePassword}"
+                FontSize="15"
+                Style="{DynamicResource LogerText}"
+                HorizontalAlignment="Left"
+                Margin="230,203,0,0" 
+                VerticalAlignment="Top"/>
+            <Border
+                Style="{DynamicResource BorderInfo}"
+                BorderThickness="2" 
+                Margin="340,168,230,257"
+                CornerRadius="10">
+                <TextBox
+                    x:Name="niknameBox"
+                    TextWrapping="Wrap"
+                    Style="{DynamicResource TextboxStyle}" 
+                    BorderThickness="0"
+                    FontSize="12" 
+                    Margin="8,2"/>
+            </Border>
+            <Border
+                Style="{DynamicResource BorderInfo}"
+                BorderThickness="2" 
+                Margin="340,208,230,217"
+                CornerRadius="10">
+                <Grid>
+                    <PasswordBox
+                        x:Name="passwordBox"
+                        PasswordChar="*"
+                        Style="{DynamicResource PasswordboxStyle}"
+                        BorderThickness="0"
+                        FontSize="18"
+                        Margin="8,2"/>
+                    <TextBox
+                        x:Name="liyPasswordBox"
+                        Visibility="Hidden"
+                        Style="{DynamicResource LiyPasswordboxStyle}"
+                        BorderThickness="0"
+                        FontSize="12"
+                        Margin="8,2"/>
+                </Grid>
+            </Border>
+            <Button Margin="470,235,230,195"
+                    Template="{DynamicResource ShowPassword}"
+                    MouseDown="ShowPass"
+                    MouseUp="UnshowPass"
+                    />
+
+
+            <Image Stretch="Fill" Source="/Image/cat.png" Margin="230,115,540,305"/>
+        </Grid>
+    </Viewbox>
+</Page>

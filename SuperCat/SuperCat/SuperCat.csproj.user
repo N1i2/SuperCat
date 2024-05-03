@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Group\AllMyGroup.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Group\MyGroup.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Group\NotMyGroup.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Lists\FriendList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Lists\MyList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Log\CreateAccount.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Log\EndCreateAccount.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Log\LogPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Group\AllMyGroup.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Group\MyGroup.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Group\NotMyGroup.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Lists\FriendList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Lists\MyList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Log\CreateAccount.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Log\EndCreateAccount.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Log\LogPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resurs\BlackStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resurs\EngLanguage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resurs\LightStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

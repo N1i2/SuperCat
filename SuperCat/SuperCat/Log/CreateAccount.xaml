@@ -1,0 +1,166 @@
+﻿<Page x:Class="SuperCat.Log.CreateAccount"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SuperCat.Log"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CreateAccount"
+      Style="{DynamicResource MainFone}">
+
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Foreground" Value="#333"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Foreground" Value="#333"/>
+        </Style>
+        <ControlTemplate
+            x:Key="backTemp"
+            TargetType="Button">
+            <Border
+                Cursor="Hand">
+                <ContentControl 
+                    x:Name="backFore"
+                    Content="V"
+                    Foreground="#333"
+                    FontSize="15"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation 
+                                Storyboard.TargetName="backFore"
+                                Storyboard.TargetProperty="(ContentControl.Foreground).(SolidColorBrush.Color)"
+                                To="#888"
+                                Duration="0:0:0:0"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation 
+                                Storyboard.TargetName="backFore"
+                                Storyboard.TargetProperty="(ContentControl.Foreground).(SolidColorBrush.Color)"
+                                To="#333"
+                                Duration="0:0:0:0"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="createBut" TargetType="Button">
+            <Border
+                CornerRadius="20"
+                BorderBrush="#333"
+                BorderThickness="2"
+                Cursor="Hand"
+                Style="{DynamicResource LogButton}">
+                <ContentControl Content="{DynamicResource NextText}"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                FontSize="15"
+                                Foreground="#ddd"/>
+            </Border>
+        </ControlTemplate>
+    </Page.Resources>
+
+    <Viewbox>
+        <Grid x:Name="Fone" Height="450" Width="800">
+            <Border Margin="160,90,160,100"
+                    BorderBrush="Black"
+                    BorderThickness="1"
+                    CornerRadius="31">
+                <Rectangle 
+                    RadiusX="30"
+                    RadiusY="30"
+                    Fill="#dedede"/>
+            </Border>
+
+            <Button
+                x:Name="backBut"
+                Margin="222,117,548,303"
+                Template="{DynamicResource backTemp}"
+                Click="BackClick">
+                <Button.RenderTransform>
+                    <RotateTransform Angle="90"/>
+                </Button.RenderTransform>
+            </Button>
+            <Label 
+                x:Name="Head"
+                Content="{DynamicResource Createheader}"
+                FontSize="20"  
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                Margin="0,100,0,0"/>
+            <Label
+                Content="{DynamicResource MandatoryText}" 
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Margin="0,135,0,0"/>
+            <Label 
+                Content="{DynamicResource RegistrationNiknameBox}"
+                VerticalAlignment="Top" 
+                Margin="190,170,0,0"
+                HorizontalAlignment="Left"/>
+            <Border Style="{DynamicResource BorderInfo}"
+                    BorderThickness="2"
+                    CornerRadius="10"
+                    Background="white"
+                    Margin="320,170,190,250">
+                <TextBox x:Name="NiknameBox" 
+                         LostFocus="LostFocusNikname"
+                         Margin="6, 2" 
+                         BorderThickness="0" 
+                         KeyUp="NiknameBox_KeyUp" />
+            </Border>
+            <Label Content="{DynamicResource RegistrationPasswordBox}"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Margin="190,210,0,0"/>
+            <Border Style="{DynamicResource BorderInfo}"
+                    BorderThickness="2"
+                    CornerRadius="10"
+                    Background="white"
+                    Margin="320,210,190,210">
+                <TextBox x:Name="PasswordBox"
+                         Margin="6, 2"
+                         BorderThickness="0" 
+                         LostFocus="LostFocusPassword"
+                         KeyUp="PasswordBox_KeyUp"/>
+            </Border>
+            <Label Content="{DynamicResource RegistrationRealNameBox}" 
+                   VerticalAlignment="Top" 
+                   HorizontalAlignment="Left"
+                   Margin="190,250,0,0"/>
+            <Border Style="{DynamicResource BorderInfo}"
+                    BorderThickness="2"
+                    CornerRadius="10"
+                    Background="white"
+                    Margin="320,250,190,170">
+                <TextBox x:Name="RealNameBox"
+                         Margin="8, 2"
+                         BorderThickness="0"
+                         LostFocus="LostFocusName"
+                         KeyUp="RealNameBox_KeyUp"/>
+            </Border>
+            <Label
+                Margin="0,280,0,0"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                x:Name="ErrorBox"
+                Style="{DynamicResource ErrorText}"
+                FontSize="20"/>
+            <Button 
+                x:Name="NextButt"
+                Margin="190,310,190,115"
+                Template="{DynamicResource createBut}" 
+                Click="NextClick"/>
+        </Grid>
+    </Viewbox>
+</Page>
