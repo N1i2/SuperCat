@@ -7,6 +7,32 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Pages\Friend\AddFriend.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Friend\AllFriends.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Friend\FriendList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Lists\Settings.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Pages\Friend\AddFriend.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Friend\AllFriends.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Friend\FriendList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Lists\Settings.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>

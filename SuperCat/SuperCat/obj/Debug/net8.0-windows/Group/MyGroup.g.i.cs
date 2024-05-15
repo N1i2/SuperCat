@@ -53,7 +53,7 @@ namespace SuperCat.Group {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/SuperCat;component/group/mygroup.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/SuperCat;V1.0.0.0;component/group/mygroup.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Group\MyGroup.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

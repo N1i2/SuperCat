@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.Windows.Themes;
 using SuperCat.MyObjects;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,6 @@ namespace SuperCat.Configurate
         public void Configure(EntityTypeBuilder<UserInfo> builder)
         {
             builder.Property(x => x.ID).ValueGeneratedOnAdd();
-            builder.Property(e => e.Birthday);
             builder.Property(x => x.Gender).HasMaxLength(1);
         }
     }

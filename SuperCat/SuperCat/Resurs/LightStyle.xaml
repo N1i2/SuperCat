@@ -96,6 +96,24 @@
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="Background" Value="#335"/>
     </Style>
-
+    <Style x:Key="HalphBlackText" TargetType="Label">
+        <Setter Property="Foreground" Value="Gray"/>
+    </Style>
+    <Style x:Key="IDBorder" TargetType="Border">
+        <Setter Property="Background" Value="#ccc"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="5"/>
+    </Style>
+    <Style x:Key="PeregorotkaH" TargetType="Ellipse">
+        <Setter Property="Fill" Value="Gray"/>
+        <Setter Property="Fill" Value="#335"/>
+    </Style>
+    <Style x:Key="PeregorotkaV" TargetType="Ellipse">
+        <Setter Property="Fill" Value="Gray"/>
+        <Setter Property="Fill" Value="Orange"/>
+    </Style>
+    
+    <!-- friend -->
 
 </ResourceDictionary>

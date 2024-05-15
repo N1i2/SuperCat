@@ -45,15 +45,53 @@
     <v:String x:Key="Year">Year</v:String>
     <v:String x:Key="Man">Man</v:String>
     <v:String x:Key="Woman">Woman</v:String>
+    <v:String x:Key="NoGender">No Gender</v:String>
     <v:String x:Key="EmailError">Uncorrect E-mail (example SuperCat15@gmail.com)</v:String>
 
     <!-- Lists -->
+    <v:String x:Key="ImageText">Image:</v:String>
     <v:String x:Key="RealName">Real Name:</v:String>
     <v:String x:Key="Nickname">Nickname:</v:String>
     <v:String x:Key="DataBirth">Years:</v:String>
     <v:String x:Key="GenderText">Gender:</v:String>
     <v:String x:Key="e-mail">e-mail:</v:String>
+    <v:String x:Key="Password">Password:</v:String>
+    <v:String x:Key="ID">Your ID:</v:String>
     <v:String x:Key="EmptyBox">No Information</v:String>
+    <v:String x:Key="DeleteAccount">Delete</v:String>
+    <v:String x:Key="CloseImage">Close</v:String>
+    <v:String x:Key="GoOutAccount">Sign out</v:String>
+    <v:String x:Key="NewImageText">New Image</v:String>
+    <v:String x:Key="AddImageText">Add Image</v:String>
+    <v:String x:Key="ChangeImageText">>> Change Image >></v:String>
+    <v:String x:Key="DefoultImage">Defoult Image</v:String>
+    <v:String x:Key="OldPasswordText">Old Password</v:String>
+    <v:String x:Key="NewPasswordText">New Password</v:String>
+    <v:String x:Key="FriendsText">Friends</v:String>
+    <v:String x:Key="GroupsText">Groups</v:String>
 
+    <v:String x:Key="ChangeNickname">Change Nickname</v:String>
+    <v:String x:Key="ChangeRealName">Change Real Name</v:String>
+    <v:String x:Key="ChangeGender">Change Gender</v:String>
+    <v:String x:Key="ChangeEmail">Change e-mail</v:String>
+    <v:String x:Key="ChangeBirthday">Change Birthday</v:String>
+    <v:String x:Key="ChangePassword">Change Password</v:String>
+
+    <v:String x:Key="SaveNickname">Save Nickname</v:String>
+    <v:String x:Key="SaveRealName">Save Real Name</v:String>
+    <v:String x:Key="SaveGender">Save Gender</v:String>
+    <v:String x:Key="SaveEmail">Save e-mail</v:String>
+    <v:String x:Key="SaveBirthday">Save Birthday</v:String>
+
+
+    <!-- Friends -->
+    <v:String x:Key="AddFriend">Add New Friend</v:String>
+    <v:String x:Key="YourFriendText">Your Friends</v:String>
+    <v:String x:Key="EmptyFriendListText">Friend List is Empty</v:String>
+
+
+    <!-- Message Text -->
+    <v:String x:Key="TestMessage">Hello</v:String> <!-- Test in file Settings in function GoOut_MouseDown -->
     
+
 </ResourceDictionary>

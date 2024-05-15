@@ -16,11 +16,12 @@ namespace SuperCat.MyObjects
         public string? Gender { get; set; } = null;
         public string? Email { get; set; }= null;
         public byte[]? Image { get; set; }= null;
+
         public UserInfo()
         {
-            
+
         }
-        public UserInfo(string nikname, string password, string realname)
+        public UserInfo(string nikname, string password, string realname):this()
         {
             Nikname = nikname;
             Password = password;

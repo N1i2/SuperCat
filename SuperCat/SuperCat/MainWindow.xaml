@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:SuperCat"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        WindowState="Maximized">
+        WindowState="Maximized"
+        Icon="/Image/icon.png">
 
     <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
 </Window>
