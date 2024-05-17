@@ -188,6 +188,7 @@
             <Button 
                 x:Name="NextButt"
                 Margin="190,310,190,110"
+                Height="30"
                 Template="{DynamicResource createBut}" 
                 Click="NextClick"/>
         </Grid>

@@ -25,6 +25,7 @@
     <v:String x:Key="OptionalText">Optional Information</v:String>
     <v:String x:Key="NextText">Next</v:String>
     <v:String x:Key="NiknameError">This nikname already exist</v:String>
+    <v:String x:Key="NiknameErrorLength">This nikname too long</v:String>
     <v:String x:Key="SmallPasswordError">This password small</v:String>
     <v:String x:Key="BigPasswordError">This password big</v:String>
     <v:String x:Key="PasswordError">The password must contain number and symbols</v:String>
@@ -88,10 +89,14 @@
     <v:String x:Key="AddFriend">Add New Friend</v:String>
     <v:String x:Key="YourFriendText">Your Friends</v:String>
     <v:String x:Key="EmptyFriendListText">Friend List is Empty</v:String>
+    <v:String x:Key="ConiderationText">Under Conideration</v:String>
+    <v:String x:Key="AllFriendText">All Friend</v:String>
+    <v:String x:Key="YourRequestsText">Your Requests</v:String>
+    <v:String x:Key="ThinkAboutFriendText">Think About Friend</v:String>
+    <v:String x:Key="EmptyImageText">Not Images</v:String>
 
 
     <!-- Message Text -->
     <v:String x:Key="TestMessage">Hello</v:String> <!-- Test in file Settings in function GoOut_MouseDown -->
-    
 
 </ResourceDictionary>

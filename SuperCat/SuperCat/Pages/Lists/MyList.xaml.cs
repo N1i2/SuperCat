@@ -5,8 +5,10 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using SuperCat.GlobalFanc;
-using SuperCat.Pages.Friend;
+using SuperCat.Pages.FriendFile;
 using System.Windows.Input;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Immutable;
 
 
 namespace SuperCat.Lists
@@ -17,14 +19,14 @@ namespace SuperCat.Lists
     public partial class MyList : Page
     {
         private UserInfo user;
-        private List<UserImage> images;
+        private List<MyImage> images;
         private AllFriends allFriends = null!;
 
         public MyList()
         {
             InitializeComponent();
             user = new UserInfo();
-            images = new List<UserImage>(); 
+            images = new List<MyImage>(); 
         }
         public MyList(UserInfo user):this()
         {
@@ -39,12 +41,12 @@ namespace SuperCat.Lists
         {
             using (var context = new SuperCatContext())
             {
-                images = context.UserImages.Where(x => x.UserId == user.ID).ToList();
+                images = context.MyImages.Where(x => x.UserInfoId == user.Id).ToList();
             }
 
             foreach (var img in images)
             {
-                ImageArea.Items.Insert(1, img.ImageInfo);
+                ImageArea.Items.Insert(1, img.Image);
             }
         }
         private void FillList()
@@ -80,7 +82,7 @@ namespace SuperCat.Lists
 
                 using (var context = new SuperCatContext())
                 {
-                    context.UserImages.Add(new UserImage(imageBytes, user.ID));
+                    context.MyImages.Add(new MyImage(imageBytes, user.Id));
 
                     context.SaveChanges();
                 }
@@ -126,12 +128,12 @@ namespace SuperCat.Lists
             {
                 byte[] imageBytes = HelpWork.GetBytesImageSource(FullImage.Source);
 
-                var userImages = context.UserImages.Where(x => x.UserId == user.ID).ToList();
-                var imageToDelete = userImages.FirstOrDefault(x => x.ImageInfo.SequenceEqual(imageBytes));
+                var userImages = context.MyImages.Where(x => x.UserInfoId == user.Id).ToList();
+                var imageToDelete = userImages.First(x => x.Image.SequenceEqual(imageBytes));
 
                 if (imageToDelete != null)
                 {
-                    context.UserImages.Remove(imageToDelete);
+                    context.MyImages.Remove(imageToDelete);
                     context.SaveChanges();
 
                     var imageToRemove = ImageArea.Items.OfType<Image>().FirstOrDefault(x => ((BitmapImage)x.Source).UriSource == ((BitmapImage)FullImage.Source).UriSource);

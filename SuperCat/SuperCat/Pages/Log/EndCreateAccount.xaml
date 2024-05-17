@@ -87,7 +87,7 @@
 
             <Button
                 x:Name="backBut"
-                Margin="78,51,692,369"
+                Margin="222,117,548,303"
                 Template="{DynamicResource backTemp}"
                 Click="BackClick">
                 <Button.RenderTransform>
@@ -108,7 +108,7 @@
                 Margin="0,130,0,0"/>
             <Button 
                 x:Name="CreateBut"
-                Margin="190,330,190,95"
+                Margin="190,320,180,81"
                 Template="{DynamicResource createBut}"
                 Click="CreateClick" />
             <Label 

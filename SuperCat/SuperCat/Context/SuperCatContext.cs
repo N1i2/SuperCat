@@ -7,14 +7,12 @@ namespace SuperCat.Context
 {
     internal class SuperCatContext : DbContext
     {
-        public SuperCatContext():base()
-        { 
-
-        }
-
         public DbSet<UserInfo> UsersInfo { get; set; } = null!;
+        public DbSet<MyImage> MyImages { get; set; } = null!;
         public DbSet<Friend> Friends { get; set; } = null!;
-        public DbSet<UserImage> UserImages { get; set; }
+        public DbSet<GroupInfo> GroupsInfo { get; set; } = null!;
+        public DbSet<GroupMember> GroupMembers { get; set; } = null!;
+        public DbSet<ChatInfo> ChatsInfo { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -22,11 +20,12 @@ namespace SuperCat.Context
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<UserInfo>().Property(x => x.Id).ValueGeneratedOnAdd();
+            modelBuilder.Entity<MyImage>().Property(x => x.Id).ValueGeneratedOnAdd();
             modelBuilder.Entity<Friend>().Property(x => x.Id).ValueGeneratedOnAdd();
-            modelBuilder.Entity<UserImage>().Property(x => x.Id).ValueGeneratedOnAdd();
-            modelBuilder.Entity<UserImage>().Property(x => x.UserId).HasColumnOrder(1);
-
-            modelBuilder.ApplyConfiguration(new ConfigUserInfo());
+            modelBuilder.Entity<GroupInfo>().Property(x => x.Id).ValueGeneratedOnAdd();
+            modelBuilder.Entity<GroupMember>().Property(x => x.Id).ValueGeneratedOnAdd();
+            modelBuilder.Entity<ChatInfo>().Property(x => x.Id).ValueGeneratedOnAdd();
         }
     }
 }

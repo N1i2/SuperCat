@@ -14,7 +14,7 @@ namespace SuperCat.Configurate
     {
         public void Configure(EntityTypeBuilder<UserInfo> builder)
         {
-            builder.Property(x => x.ID).ValueGeneratedOnAdd();
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Property(x => x.Gender).HasMaxLength(1);
         }
     }

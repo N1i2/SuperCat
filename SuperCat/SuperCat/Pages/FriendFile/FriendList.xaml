@@ -1,0 +1,201 @@
+﻿<Page x:Class="SuperCat.Pages.FriendFile.FriendList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SuperCat.Lists"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MyList"
+      Style="{DynamicResource MainFone}" KeyDown="Page_KeyDown"
+      x:Name="ListFone">
+
+    <Page.Resources>
+        <ControlTemplate x:Key="ListButton" TargetType="Button">
+            <Border x:Name="ListButtonBorder" 
+                    Style="{DynamicResource ProfilStyle}"
+                    CornerRadius="10"
+                    Cursor="Hand">
+                <ContentControl Content="{TemplateBinding Content}" 
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Center"
+                                Style="{DynamicResource ButtonContent}"
+                                FontSize="20"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="ListButtonBorder" Property="Background" Value="#113"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="ListButtonBorder" Property="Background" Value="Orange"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Page.Resources>
+
+    <Viewbox>
+        <Grid Height="450" Width="800">
+
+            <Border 
+                Margin="34,66,666,284" 
+                BorderThickness="3"
+                CornerRadius="10"
+                Style="{DynamicResource BorderInfo}"
+                Padding="3" >
+                <Image x:Name="CatImage" Stretch="Fill"/>
+            </Border>
+            <Image x:Name="SettingsButton"
+                Margin="736,65,34,355"
+                   Stretch="Fill"
+                   Visibility="Collapsed"
+                   Source="/Image/Settings.png"
+                   Cursor="Hand" MouseDown="GoSettings"/>
+
+            <Label
+                Content="{DynamicResource Nickname}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Style="{DynamicResource ListsText}"
+                       Margin="160,30,0,0"/>
+            <Label x:Name="nicknameBox"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Style="{DynamicResource ListsText}"
+                   Content="{DynamicResource EmptyBox}"
+                   Margin="250, 30, 0, 0"
+                   MaxWidth="450"/>
+
+            <Label
+                Content="{DynamicResource RealName}" 
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Style="{DynamicResource ListsText}"
+                       Margin="160,78,0,0"/>
+            <Label x:Name="realNameBox"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Style="{DynamicResource ListsText}"
+                   Content="{DynamicResource EmptyBox}"
+                   Margin="250,78,0,0"
+                   MaxWidth="450"/>
+
+            <Label
+                Content="{DynamicResource DataBirth}"
+                Style="{DynamicResource ListsText}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Margin="160, 95, 0, 0"/>
+            <Label x:Name="YearsBox"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Style="{DynamicResource ListsText}"
+                   Content="{DynamicResource EmptyBox}"
+                   Margin="250, 95, 0, 0"
+                   MaxWidth="450"/>
+
+            <Label
+                Content="{DynamicResource GenderText}"
+                Style="{DynamicResource ListsText}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Margin="160,112,0,0"/>
+            <Label x:Name="genderBox"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Style="{DynamicResource ListsText}"
+                   Content="{DynamicResource EmptyBox}"
+                   Margin="250,112,0,0"
+                   MaxWidth="450"/>
+
+            <Label
+                Content="{DynamicResource e-mail}"
+                Style="{DynamicResource ListsText}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Margin="160, 130, 0, 0"/>
+            <Label x:Name="emailBox"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Style="{DynamicResource ListsText}"
+                   Content="{DynamicResource EmptyBox}"
+                   Margin="250, 130, 0, 0"
+                   MaxWidth="450"/>
+            <Button
+                x:Name="backBut"
+                Margin="56,30,714,388"
+                Template="{DynamicResource backTemp}"
+                Click="BackClick">
+                <Button.RenderTransform>
+                    <RotateTransform Angle="90"/>
+                </Button.RenderTransform>
+            </Button>
+            <Border 
+                x:Name="Fone"
+                Margin="10,50,10,270"
+                    Style="{DynamicResource ProfilStyle}"
+                    CornerRadius="30" Panel.ZIndex="-1"/>
+
+            <Label x:Name="emptyImage"
+                   Content="{DynamicResource EmptyImageText}"
+                   Style="{DynamicResource HalphBlackText}"
+                   VerticalAlignment="Top"
+                   Visibility="Collapsed"
+                   HorizontalAlignment="Center"
+                   Margin="0,253,0,0"/>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="30, 210, 30, 0" >
+                <ItemsControl x:Name="ImageArea" MouseDown="ImageArea_MouseDown"
+                              BorderBrush="Black" BorderThickness="1">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Width="100" Height="100" BorderThickness="1" BorderBrush="Black" Margin="10" Cursor="Hand">
+                                <Image Source="{Binding}" Stretch="UniformToFill"/>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <Button x:Name="AddImageButton"
+                            Content="{DynamicResource AddImageText}"
+                            Visibility="Collapsed"
+                            Margin="10" Width="100" Height="100" 
+                            Cursor="Hand"
+                            FontSize="12"
+                            Click="AddImage_Click"/>
+                </ItemsControl>
+            </ScrollViewer>
+
+            <Rectangle 
+                x:Name="ImageFoun"
+                Fill="#C8333333"
+                Visibility="Collapsed"
+                Width="1000"/>
+            <Border x:Name="ImageBoreder"
+                    BorderBrush="Black"
+                    BorderThickness="2"
+                    Width="430"
+                    Height="430"
+                    Visibility="Collapsed">
+                <Image x:Name="FullImage"
+                   Stretch="UniformToFill"/>
+            </Border>
+            <Button
+                x:Name="CloseFullImage" 
+                Content="{DynamicResource CloseImage}" 
+                Margin="50,370,640,50"
+                Click="CloseFullImage_Click"
+                Visibility="Collapsed"/>
+            <Button
+                x:Name="DeleteImage" 
+                Content="{DynamicResource DeleteAccount}" 
+                Margin="640,370,50,50" 
+                Click="DeleteImage_Click"
+                Visibility="Collapsed"/>
+
+        </Grid>
+    </Viewbox>
+</Page>
+
+    

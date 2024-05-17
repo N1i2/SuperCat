@@ -96,12 +96,14 @@
             <Button                
                 x:Name="AlreadyHaveAcccount"
                 Margin="230,265,230,160"
+                Height="25"
                 Template="{DynamicResource LogButtons}" 
                 Click="LogInAccount"/>
 
             <Button                
                 x:Name="CreateNewAccount"
-                Margin="230,305,230,120"
+                Margin="230,295,230,114"
+                Height="25"
                 Template="{DynamicResource CreatButtons}" 
                 Click="CreateNewAccounts"/>
 

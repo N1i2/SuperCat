@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 D:\univer\SuperCat\SuperCat\SuperCat\App.xaml
-151975524272
+142123172903
 
-281434271445
-238-1704458050
-MainWindow.xaml;Pages\Friend\AddFriend.xaml;Pages\Friend\AllFriends.xaml;Pages\Friend\FriendList.xaml;Pages\Group\AllMyGroup.xaml;Pages\Group\MyGroup.xaml;Pages\Group\NotMyGroup.xaml;Pages\Lists\MyList.xaml;Pages\Lists\Settings.xaml;Pages\Log\CreateAccount.xaml;Pages\Log\EndCreateAccount.xaml;Pages\Log\LogPage.xaml;Resurs\BlackStyle.xaml;Resurs\EngLanguage.xaml;Resurs\LightStyle.xaml;
+30795453770
+240-2138625127
+MainWindow.xaml;Pages\FriendFile\AllFriends.xaml;Pages\FriendFile\FriendList.xaml;Pages\Group\AllMyGroup.xaml;Pages\Group\MyGroup.xaml;Pages\Group\NotMyGroup.xaml;Pages\Lists\MyList.xaml;Pages\Lists\Settings.xaml;Pages\Log\CreateAccount.xaml;Pages\Log\EndCreateAccount.xaml;Pages\Log\LogPage.xaml;Resurs\BlackStyle.xaml;Resurs\EngLanguage.xaml;Resurs\LightStyle.xaml;
 
 True
 

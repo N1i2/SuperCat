@@ -1,12 +1,11 @@
 ﻿using SuperCat.Context;
 using SuperCat.MyObjects;
 using SuperCat.Lists;
+using SuperCat.GlobalFanc;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
-using System.IO;
-using System.Text.Json;
 
 namespace SuperCat.Log
 {
@@ -226,8 +225,10 @@ namespace SuperCat.Log
         private UserInfo SaveInfo(UserInfo userInfo)
         {
             using (var context = new SuperCatContext())
+            using (var contextFriend = new SuperCatContext())
             {
                 context.UsersInfo.Add(userInfo);
+                contextFriend.Friends.Add(new Friend(userInfo.Id));
 
                 context.SaveChanges();
 

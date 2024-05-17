@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:SuperCat.Lists"
+
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Settings"
@@ -55,7 +55,7 @@
                    VerticalAlignment="Top"
                    HorizontalAlignment="Left" 
                    Margin="240,130,0,0"
-                   MaxWidth="260"/>
+                   MaxWidth="250"/>
             <TextBox x:Name="NiknameBoxText"
                      Style="{DynamicResource TextboxStyle}"
                      Visibility="Hidden"
@@ -63,17 +63,21 @@
                    Padding="0, 0, 10, 0"
                    HorizontalAlignment="Left" 
                    Margin="242,134,0,0"
-                   MaxWidth="260"/>
+                   MaxWidth="250"/>
             <Button x:Name="ChangeNikname"
-                    Margin="520,135,0,0"
+                    Margin="520,126,0,0"
                     VerticalAlignment="Top"
+                    Height="25"
+                    FontSize="12"
                     HorizontalAlignment="Left"
                     Content="{DynamicResource ChangeNickname}"
                     Click="ChangeNikname_Click"/>
             <Button x:Name="saveNikname"
-                    Margin="520,135,0,0"
                     Visibility="Hidden"
+                    Margin="520,126,0,0"
                     VerticalAlignment="Top"
+                    Height="25"
+                    FontSize="12"
                     HorizontalAlignment="Left"
                     Content="{DynamicResource SaveNickname}"
                     Click="SaveNikname_Click"/>
@@ -90,7 +94,7 @@
           VerticalAlignment="Top"
           HorizontalAlignment="Left" 
           Margin="240,170,0,0"
-          MaxWidth="260"/>
+          MaxWidth="250"/>
             <TextBox x:Name="RealNameText"
             Style="{DynamicResource TextboxStyle}"
             Visibility="Hidden"
@@ -98,15 +102,19 @@
           Padding="0, 0, 10, 0"
           HorizontalAlignment="Left" 
           Margin="242,174,0,0"
-          MaxWidth="260"/>
+          MaxWidth="250"/>
             <Button x:Name="ChangeRealName"
-           Margin="520,175,0,0"
+           Margin="520,167,0,0"
+                    Height="25"
+                    FontSize="12"
            VerticalAlignment="Top"
            HorizontalAlignment="Left"
            Content="{DynamicResource ChangeRealName}" 
                     Click="ChangeRealName_Click"/>
             <Button x:Name="saveRealName"
-           Margin="520,175,0,0"
+           Margin="520,167,0,0"
+                    Height="25"
+                    FontSize="12"
            Visibility="Hidden"
            VerticalAlignment="Top"
            HorizontalAlignment="Left"
@@ -125,43 +133,50 @@
                 VerticalAlignment="Top"
                 HorizontalAlignment="Left" 
                 Margin="240,210,0,0"
-                MaxWidth="260"/>
+                MaxWidth="250"/>
 
             <ComboBox
                 x:Name="YourYear"
-                Visibility="Hidden"
-                Style="{StaticResource ComboStyle}"
-                Margin="240,215,515,220"
+                Margin="240,210,515,220"
                 FontSize="8"
+                Height="20"
+                Visibility="Collapsed"
                 SelectionChanged="SelectionChangedYear" />
             <ComboBox
                 x:Name="YourMonth"
                 FontSize="7"
-                Visibility="Hidden"
+                Height="20"
+                Visibility="Collapsed"
                 SelectionChanged="SelectionChangedMonth"
-                Margin="290,215,440,220" />
+                Margin="290,210,440,220" />
             <ComboBox
                 x:Name="YourDay"
-                Style="{StaticResource ComboStyle}"
                 FontSize="8"
-                Visibility="Hidden"
-                Margin="365,215,380,220"/>
+                Visibility="Collapsed"
+                Height="20"
+                Margin="365,210,380,220"/>
 
             <Button x:Name="ChangeBirtgday"
-                Margin="520,215,0,0"
+                Margin="520,206,0,0"
                 VerticalAlignment="Top"
+                    Height="25"
+                    FontSize="12"
                 HorizontalAlignment="Left"
                 Content="{DynamicResource ChangeBirthday}" 
                 Click="ChangeBirthday_Click"/>
             <Button x:Name="DeletBirth"
-                Margin="613,215,0,0"
+                Margin="650,206,0,0"
                 VerticalAlignment="Top"
+                    Height="25"
                 Visibility="Hidden"
+                    FontSize="12"
                 HorizontalAlignment="Left"
                 Content="X" Click="DeletBirth_Click" />
             <Button x:Name="saveBirthday"
-                Margin="520,215,0,0"
+                Margin="520,206,0,0"
                 VerticalAlignment="Top"
+                    Height="25"
+                    FontSize="12"
                 Visibility="Hidden"
                 HorizontalAlignment="Left"
                 Content="{DynamicResource SaveBirthday}"
@@ -183,7 +198,7 @@
                 Content="{DynamicResource DeleteAccount}"
                 Margin="0,80,167,0"/>
             <Border
-                Margin="547,61,228,364"
+                Margin="547,60,228,365"
                 BorderBrush="Black"
                 MouseDown="GoOut_MouseDown" 
                 BorderThickness="1">
@@ -196,7 +211,7 @@
                 Content="{DynamicResource GoOutAccount}"
                 VerticalAlignment="Top"
                 HorizontalAlignment="Right"
-                Margin="0,81,223,0"/>
+                Margin="0,80,223,0"/>
 
             <Label
                 Style="{DynamicResource LogerText}"
@@ -212,10 +227,12 @@
                     <Image x:Name="textImg"
                            Stretch="Fill" 
                            MouseDown="FindNewImage"/>
-                    <Button x:Name="ButtonNewImage" FontSize="8"
+                    <Button x:Name="ButtonNewImage"
+                            Height="40"
+                            FontSize="8"
                             Padding="2, 43, 0, 0" 
                             Click="FindNewImage">
-                        <TextBlock Text="{DynamicResource NewImageText}" Margin="-15">
+                        <TextBlock Text="{DynamicResource NewImageText}" Margin="-13">
                             <TextBlock.RenderTransform>
                                 <RotateTransform Angle="-45"/>
                             </TextBlock.RenderTransform>
@@ -229,6 +246,7 @@
                 Margin="309,66,0,364"
                 IsEnabled="False"
                 BorderBrush="Black"
+                Height="20"
                 Content="{DynamicResource ChangeImageText}"
                 FontSize="8"
                 Padding="6, 0"
@@ -246,6 +264,8 @@
             <Button VerticalAlignment="Top"
                     HorizontalAlignment="Left"
                 Margin="309,89,0,0"
+                    Height="20"
+                    FontSize="8"
                 Content="{DynamicResource DefoultImage}" Click="DefoultImg_Click" Width="90"/>
 
             <Label x:Name="Gender"
@@ -260,7 +280,7 @@
                 VerticalAlignment="Top"
                 HorizontalAlignment="Left" 
                 Margin="240,250,0,0"
-                MaxWidth="260"/>
+                MaxWidth="250"/>
             <Label
                 x:Name="ManText"
                 Style="{DynamicResource LogerText}"
@@ -288,27 +308,31 @@
                 Margin="390,250,0,0"/>
             <RadioButton x:Name="radioMan"
                 Template="{DynamicResource MyRadioButton}"
-                Margin="270,255,510,175"
+                Margin="270,250,510,180"
                 Visibility="Hidden"
                 IsChecked="True"/>
             <RadioButton x:Name="radioWoman"
                 Template="{DynamicResource MyRadioButton}"
                 Visibility="Hidden"
-                Margin="360,255,420,175"/>
+                Margin="360,250,420,180"/>
             <RadioButton x:Name="radioNoGender"
                 Template="{DynamicResource MyRadioButton}"
                 Visibility="Hidden"
-                Margin="455,255,325,175"/>
+                Margin="455,250,325,180"/>
             <Button x:Name="ChangeGender"
-                Margin="520,255,0,0"
+                Margin="520,246,0,0"
                 VerticalAlignment="Top"
+                    Height="25"
+                    FontSize="12"
                 HorizontalAlignment="Left"
                 Content="{DynamicResource ChangeGender}"
                 Click="ChangeGender_Click"/>
             <Button x:Name="SaveGender"
-                Margin="520,255,0,0"
-                Visibility="Hidden"
+                Margin="520,246,0,0"
                 VerticalAlignment="Top"
+                    Height="25"
+                    FontSize="12"
+                Visibility="Hidden"
                 HorizontalAlignment="Left"
                 Content="{DynamicResource SaveGender}"
                 Click="SaveGender_Click"/>
@@ -325,7 +349,7 @@
         VerticalAlignment="Top"
         HorizontalAlignment="Left" 
         Margin="240,290,0,0"
-        MaxWidth="260"/>
+        MaxWidth="250"/>
             <TextBox x:Name="EmailBoxText"
           Style="{DynamicResource TextboxStyle}"
         VerticalAlignment="Top"
@@ -333,15 +357,19 @@
           Visibility="Hidden"
         HorizontalAlignment="Left" 
         Margin="242,294,0,0"
-        MaxWidth="260"/>
+        MaxWidth="250"/>
             <Button x:Name="ChangeEmail"
-         Margin="520,295,0,0"
+         Margin="520,290,0,0"
          VerticalAlignment="Top"
+                    Height="25"
+                    FontSize="12"
          HorizontalAlignment="Left"
          Content="{DynamicResource ChangeEmail}" 
          Click="ChangeEmail_Click"/>
             <Button x:Name="SaveEmail"
-         Margin="520,295,0,0"
+         Margin="520,290,0,0"
+                    Height="25"
+                    FontSize="12"
          Visibility="Hidden"
          VerticalAlignment="Top"
          HorizontalAlignment="Left"
@@ -355,7 +383,7 @@
                    Margin="80, 335, 0, 0"
                    Content="{DynamicResource Password}"/>
             <PasswordBox x:Name="OldPasswordTextBox"
-                         Margin="242,337,450,95"
+                         Margin="242,335,450,90"
                          FontSize="18"
                          GotFocus="oldPassword_GotFocus"
                          PasswordChar="*" LostFocus="OldPasswordTextBox_LostFocus"/>
@@ -364,14 +392,16 @@
                    HorizontalAlignment="Left"
                    Style="{DynamicResource HalphBlackText}"
                    Margin="240,333,0,0"
+                   FontSize="12"
                    Cursor="IBeam"
                    Content="{DynamicResource OldPasswordText}" 
                    MouseDown="oldPasswordLable_GotFocusTop"/>
             <TextBox x:Name="liyOldPassword"
+                   FontSize="12"
                      Visibility="Hidden"
-                     Margin="242,337,450,95"/>
+                     Margin="242,335,450,90"/>
             <PasswordBox x:Name="NewPasswordTextBox"
-                         Margin="372,337,320,95"
+                         Margin="372,335,320,90"
                          FontSize="18"
                          GotFocus="newPassword_GotFocus"
                          PasswordChar="*" LostFocus="NewPasswordTextBox_LostFocus"/>
@@ -384,18 +414,21 @@
                    Content="{DynamicResource NewPasswordText}" 
                    MouseDown="newPasswordLable_GotFocusTop"/>
             <TextBox x:Name="liyNewPassword"
-                   Margin="372,337,320,95"
+                   Margin="372,335,320,90"
+                     FontSize="12"
                      Visibility="Hidden"/>
             <Button x:Name="ChangePassword"
-                Margin="520, 335, 0, 0"
+                Margin="520,334,0,0"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Left"
+                    Height="25"
+                    FontSize="12"
                     Content="{DynamicResource ChangePassword}" 
                     Click="ChangePassword_Click"/>
             <Image 
                 VerticalAlignment="Top"
                 HorizontalAlignment="Left"
-                Margin="629,331,0,0"
+                Margin="653,331,0,0"
                 MouseDown="ShowPass"
                 MouseUp="UnshowPass"
                 Stretch="Fill"
@@ -415,27 +448,27 @@
                 <Label x:Name="NumberID"
                     Style="{DynamicResource LogerText}"
                     Content="{DynamicResource EmptyBox}"
-                    MaxWidth="260"/>
+                    MaxWidth="250"/>
             </Border>
 
-            <Ellipse Style="{DynamicResource PeregorotkaV}" Margin="211,0,579,0" Height="346" VerticalAlignment="Center"/>
-            <Ellipse Style="{DynamicResource PeregorotkaV}" Margin="501,0,289,0" Height="346" VerticalAlignment="Center"/>
+            <Ellipse Style="{DynamicResource PeregorotkaV}" Margin="211,0,579,0" Height="378" VerticalAlignment="Center"/>
+            <Ellipse Style="{DynamicResource PeregorotkaV}" Margin="501,0,289,0" Height="378" VerticalAlignment="Center"/>
 
             <Ellipse Style="{DynamicResource PeregorotkaH}"
                 Margin="70,115,70,327" RenderTransformOrigin="0.5,0.5">
             </Ellipse>
             <Ellipse Style="{DynamicResource PeregorotkaH}"
-                Margin="70,160,70,282" RenderTransformOrigin="0.5,0.5"/>
+                Margin="70,155,70,287" RenderTransformOrigin="0.5,0.5"/>
             <Ellipse Style="{DynamicResource PeregorotkaH}"
-                Margin="70,205,70,237" RenderTransformOrigin="0.5,0.5"/>
+                Margin="70,195,70,247" RenderTransformOrigin="0.5,0.5"/>
             <Ellipse Style="{DynamicResource PeregorotkaH}"
-                Margin="70,240,70,202" RenderTransformOrigin="0.5,0.5"/>
+                Margin="70,235,70,207" RenderTransformOrigin="0.5,0.5"/>
             <Ellipse Style="{DynamicResource PeregorotkaH}"
-                Margin="70,285,70,157" RenderTransformOrigin="0.5,0.5"/>
+                Margin="70,275,70,167" RenderTransformOrigin="0.5,0.5"/>
             <Ellipse Style="{DynamicResource PeregorotkaH}"
                 Margin="70,320,70,122" RenderTransformOrigin="0.5,0.5"/>
             <Ellipse Style="{DynamicResource PeregorotkaH}"
-                Margin="70,360,70,82" RenderTransformOrigin="0.5,0.5"/>
+                Margin="71,365,69,77" RenderTransformOrigin="0.5,0.5"/>
         </Grid>
     </Viewbox>
 </Page>

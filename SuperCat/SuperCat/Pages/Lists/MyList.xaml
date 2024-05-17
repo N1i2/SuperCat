@@ -127,12 +127,12 @@
 
             <Button x:Name="FriendsButton"
                     Template="{DynamicResource ListButton}"
-                    Margin="30, 160, 30, 260" 
+                    Margin="30, 160, 30, 258" 
                     Content="{DynamicResource FriendsText}" Click="FriendsButton_Click"/>
             <Button x:Name="GroupsButton"
                     Template="{DynamicResource ListButton}"
                     Content="{DynamicResource GroupsText}"
-                    Margin="30, 200, 30, 220" />
+                    Margin="30, 200, 30, 218" />
 
             <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="30, 250, 30, 0" >
                 <ItemsControl x:Name="ImageArea" MouseDown="ImageArea_MouseDown"
@@ -153,6 +153,7 @@
                             Content="{DynamicResource AddImageText}"
                             Margin="10" Width="100" Height="100" 
                             Cursor="Hand"
+                            FontSize="12"
                             Click="AddImage_Click"/>
                 </ItemsControl>
             </ScrollViewer>

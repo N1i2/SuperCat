@@ -62,6 +62,15 @@ namespace SuperCat.Log
                 }
             }
 
+            if(NiknameBox.Text.Length > 30)
+            {
+                ErrorBox.Content = System.Windows.Application.Current.Resources["NiknameErrorLength"] as string;
+                ErrorBox.Visibility = Visibility.Visible;
+                nicknameWell = false;
+                ShowError((TextBox)sender);
+                return;
+            }
+
             NiknameBox.Background = null;
             nicknameWell = true;
             ErrorBox.Visibility = Visibility.Hidden;
@@ -230,8 +239,8 @@ namespace SuperCat.Log
         }
         private void NextClick(object sender, RoutedEventArgs e)
         {
-            if (!(nicknameWell 
-                //commet password line
+            if (!(nicknameWell
+                //Закомитить для создания аккаунта администратора + часть в методе Save в EndCreateAccount
                 && passwordWell
                 && nameWell))
             {

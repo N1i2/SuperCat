@@ -61,7 +61,6 @@ namespace SuperCat.Lists
                 radioNoGender.IsChecked = true;
         }
 
-
         private void FillArea(UserInfo user)
         {
             this.user = user;
@@ -79,7 +78,7 @@ namespace SuperCat.Lists
             }
             for (int i = 0; i < 10; i++)
             {
-                NumberID.Content = user.ID.ToString("D10");
+                NumberID.Content = user.Id.ToString("D10");
             }
         }
         private void DoChange(Label block, TextBox box, Button button)
@@ -305,7 +304,7 @@ namespace SuperCat.Lists
             {
                 using (var context = new SuperCatContext())
                 {
-                    NavigationService.Navigate(new MyList(context.UsersInfo.Where(u => u.ID == user.ID).First()));
+                    NavigationService.Navigate(new MyList(context.UsersInfo.Where(x => x.Id == user.Id).First()));
                 }
 
                 return;
@@ -324,7 +323,7 @@ namespace SuperCat.Lists
 
             using (var contecst = new SuperCatContext())
             {
-                var arr = contecst.UsersInfo.Where(u => u.ID == user.ID).First();
+                var arr = contecst.UsersInfo.Where(u => u.Id == user.Id).First();
 
                 contecst.UsersInfo.Remove(arr);
 
@@ -399,7 +398,7 @@ namespace SuperCat.Lists
 
             using (var context = new SuperCatContext())
             {
-                context.UsersInfo.Where(u => u.ID == user.ID).First().Image = imageBytes;
+                context.UsersInfo.Where(u => u.Id == user.Id).First().Image = imageBytes;
 
                 context.SaveChanges();
             }
@@ -621,12 +620,18 @@ namespace SuperCat.Lists
 
             liyOldPassword.Visibility = Visibility.Visible;
             liyNewPassword.Visibility = Visibility.Visible;
+
+            OldPasswordTextBox.Visibility = Visibility.Collapsed;
+            NewPasswordTextBox.Visibility = Visibility.Collapsed;
         }
 
         private void UnshowPass(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             liyOldPassword.Visibility = Visibility.Hidden;
             liyNewPassword.Visibility = Visibility.Hidden;
+
+            OldPasswordTextBox.Visibility = Visibility.Visible;
+            NewPasswordTextBox.Visibility = Visibility.Visible;
         }
     }
 }

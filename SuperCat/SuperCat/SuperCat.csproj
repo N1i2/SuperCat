@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <None Remove="Image\addFriend - Copy.png" />
+    <None Remove="Image\addFriend.png" />
     <None Remove="Image\allCorrect.png" />
     <None Remove="Image\eye.jpg" />
     <None Remove="Image\eye.png" />
@@ -21,17 +22,28 @@
     <None Remove="Image\icon\2_love.png" />
     <None Remove="Image\icon\3_cat.png" />
     <None Remove="Image\icon\4_waitFone.png" />
+    <None Remove="Image\Locate.png" />
+    <None Remove="Image\search.png" />
     <None Remove="Image\Settings.png" />
     <None Remove="Image\trash.png" />
     <None Remove="Image\YouHaveMail.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.2.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Image\addFriend - Copy.png">
+    <Resource Include="Image\addFriend.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Image\allCorrect.png">
@@ -65,6 +77,12 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Image\icon\4_waitFone.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\Locate.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\search.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Image\Settings.png">
