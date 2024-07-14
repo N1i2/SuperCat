@@ -171,6 +171,7 @@
                         HorizontalAlignment="Right"
                         Margin="200,0,5,0"
                         MouseDown="ShowPass"
+                        Visibility="Collapsed"
                         MouseUp="UnshowPass"
                         Stretch="Fill"
                         Source="/Image/eye.png"/>

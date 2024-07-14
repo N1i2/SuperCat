@@ -132,7 +132,7 @@
             <Button x:Name="GroupsButton"
                     Template="{DynamicResource ListButton}"
                     Content="{DynamicResource GroupsText}"
-                    Margin="30, 200, 30, 218" />
+                    Margin="30, 200, 30, 218" Click="GroupsButton_Click" />
 
             <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="30, 250, 30, 0" >
                 <ItemsControl x:Name="ImageArea" MouseDown="ImageArea_MouseDown"
@@ -157,6 +157,14 @@
                             Click="AddImage_Click"/>
                 </ItemsControl>
             </ScrollViewer>
+
+            <Button Margin="711,94,36,324"
+                    Content="..."
+                    FontSize="20"
+                    Visibility="Collapsed"
+                    Background="Orange"
+                    x:Name="AdminMessage" 
+                    Click="AdminMessage_Click"/>
 
             <Rectangle 
                 x:Name="ImageFoun"

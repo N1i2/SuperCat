@@ -7,7 +7,22 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Pages\ChatsList\GoAdminMessage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\ChatsList\GoFriendChat.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\ChatsList\GoGroupChat.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Pages\FriendFile\AllFriends.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Group\AllMyGroups.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Group\CreateNewGroup.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Pages\Lists\Settings.xaml.cs">
@@ -15,16 +30,34 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Pages\ChatsList\GoAdminMessage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\ChatsList\GoFriendChat.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\ChatsList\GoGroupChat.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Pages\FriendFile\AllFriends.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\FriendFile\FriendList.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Pages\Group\AllMyGroups.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Group\CreateNewGroup.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Pages\Lists\Settings.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resurs\RusLanguage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

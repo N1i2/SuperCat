@@ -1,11 +1,11 @@
-﻿using MaterialDesignThemes.Wpf;
-using Microsoft.IdentityModel.Tokens;
-using SuperCat.Context;
+﻿using SuperCat.Context;
 using SuperCat.GlobalFanc;
+using SuperCat.Pages.ChatsList;
 using SuperCat.MyObjects;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using SuperCat.Lists;
 using System.Windows.Media;
 using System.Windows.Navigation;
 
@@ -18,20 +18,22 @@ namespace SuperCat.Pages.FriendFile
     {
         private UserInfo user = null!;
         private List<UserInfo> userInfos = new List<UserInfo>();
-        private List<MyObjects.Friend> myFriends = null!;
-        private List<MyObjects.Friend> thinkFriend = null!;
-        private List<MyObjects.Friend> Repuests = null!;
+        private List<Friend> myFriends = null!;
+        private List<Friend> thinkFriend = null!;
+        private List<Friend> Repuests = null!;
+        private bool recreate;
 
         public AllFriends()
         {
             InitializeComponent();
         }
-        public AllFriends(UserInfo user):this()
+        public AllFriends(UserInfo user, bool recreate = false):this()
         {
             this.user = user;
-            myFriends = new List<MyObjects.Friend>();
-            thinkFriend = new List<MyObjects.Friend>();
-            Repuests = new List<MyObjects.Friend>();
+            myFriends = new List<Friend>();
+            thinkFriend = new List<Friend>();
+            Repuests = new List<Friend>();
+            this.recreate = recreate;
 
             FillFriends();
 
@@ -103,25 +105,27 @@ namespace SuperCat.Pages.FriendFile
             };
             iconBord.Child = icon;
 
-            Label nick = new Label
+            TextBlock nick = new TextBlock
             {
-                VerticalAlignment = defouldNicknameLabel.VerticalAlignment,
-                HorizontalAlignment = defouldNicknameLabel.HorizontalAlignment,
-                Style = defouldNicknameLabel.Style,
-                Content = friend.Nikname,
-                FontSize = defouldNicknameLabel.FontSize,
-                Margin = defouldNicknameLabel.Margin,
-                Width = defouldNicknameLabel.Width,
+                VerticalAlignment = defouldNicknameBlock.VerticalAlignment,
+                HorizontalAlignment = defouldNicknameBlock.HorizontalAlignment,
+                Style = defouldNicknameBlock.Style,
+                Text = friend.Nikname,
+                TextTrimming = TextTrimming.CharacterEllipsis,
+                FontSize = defouldNicknameBlock.FontSize,
+                Margin = defouldNicknameBlock.Margin,
+                Width = defouldNicknameBlock.Width,
             };
-            Label realN = new Label
+            TextBlock realN = new TextBlock
             {
-                VerticalAlignment = defouldRealNameLabel.VerticalAlignment,
-                HorizontalAlignment = defouldRealNameLabel.HorizontalAlignment,
-                Style = defouldRealNameLabel.Style,
-                Content = friend.RealName,
-                FontSize = defouldRealNameLabel.FontSize,
-                Margin = defouldRealNameLabel.Margin,
-                Width = defouldRealNameLabel.Width,
+                VerticalAlignment = defouldRealNameBlock.VerticalAlignment,
+                HorizontalAlignment = defouldRealNameBlock.HorizontalAlignment,
+                Style = defouldRealNameBlock.Style,
+                TextTrimming = TextTrimming.CharacterEllipsis,
+                Text = friend.RealName,
+                FontSize = defouldRealNameBlock.FontSize,
+                Margin = defouldRealNameBlock.Margin,
+                Width = defouldRealNameBlock.Width,
             };
             Label Id = new Label
             {
@@ -133,32 +137,36 @@ namespace SuperCat.Pages.FriendFile
                 Margin = defouldIdLabel.Margin,
             };
 
-            Image del = new Image
-            {
-                Stretch = defouldTrashImage.Stretch,
-                Cursor = defouldMailBord.Cursor,
-                Source = defouldTrashImage.Source
-            };
-            Border delBord = new Border
-            {
-                Height = defouldTrashBord.Height,
-                Cursor = defouldMailBord.Cursor,
-                Width = defouldTrashBord.Width,
-                Style = defouldTrashBord.Style,
-                Padding = defouldTrashBord.Padding,
-                Margin = defouldTrashBord.Margin,
-                BorderThickness = defouldTrashBord.BorderThickness,
-                BorderBrush = defouldTrashBord.BorderBrush,
-            };
-            delBord.MouseDown += defouldTrashBord_Click;
-            delBord.Child = del;
 
             Grid _case = new Grid();
             _case.Children.Add(iconBord);
             _case.Children.Add(nick);
             _case.Children.Add(realN);
             _case.Children.Add(Id);
-            _case.Children.Add(delBord);
+
+            if (friend.Id != 1)
+            {
+                Image del = new Image
+                {
+                    Stretch = defouldTrashImage.Stretch,
+                    Cursor = defouldMailBord.Cursor,
+                    Source = defouldTrashImage.Source
+                };
+                Border delBord = new Border
+                {
+                    Height = defouldTrashBord.Height,
+                    Cursor = defouldMailBord.Cursor,
+                    Width = defouldTrashBord.Width,
+                    Style = defouldTrashBord.Style,
+                    Padding = defouldTrashBord.Padding,
+                    Margin = defouldTrashBord.Margin,
+                    BorderThickness = defouldTrashBord.BorderThickness,
+                    BorderBrush = defouldTrashBord.BorderBrush,
+                };
+                delBord.MouseDown += defouldTrashBord_Click;
+                delBord.Child = del;
+                _case.Children.Add(delBord);
+            }
 
             return _case;
         }
@@ -182,20 +190,20 @@ namespace SuperCat.Pages.FriendFile
         {
             Image yes = new Image
             {
-                Stretch = defouldMailImage.Stretch,
-                Cursor = defouldMailBord.Cursor,
+                Stretch = defouldYesImage.Stretch,
+                Cursor = defouldYesBord.Cursor,
                 Source = defouldYesImage.Source
             };
             Border yesBord = new Border
             {
-                Cursor = defouldMailBord.Cursor,
-                Height = defouldMailBord.Height,
-                Width = defouldMailBord.Width,
-                Style = defouldMailBord.Style,
-                Padding = defouldMailBord.Padding,
-                Margin = defouldMailBord.Margin,
-                BorderThickness = defouldMailBord.BorderThickness,
-                BorderBrush = defouldMailBord.BorderBrush,
+                Cursor = defouldYesBord.Cursor,
+                Height = defouldYesBord.Height,
+                Width = defouldYesBord.Width,
+                Style = defouldYesBord.Style,
+                Padding = defouldYesBord.Padding,
+                Margin = defouldYesBord.Margin,
+                BorderThickness = defouldYesBord.BorderThickness,
+                BorderBrush = defouldYesBord.BorderBrush,
             };
             yesBord.Child = yes;
             yesBord.MouseDown += AgreeFriend_Click;
@@ -225,6 +233,7 @@ namespace SuperCat.Pages.FriendFile
                 BorderBrush = defouldMailBord.BorderBrush,
             };
             mailBord.Child = mail;
+            mailBord.MouseDown += defouldMailBord_MouseDown;
 
             _case.Children.Add(mailBord);
 
@@ -232,6 +241,11 @@ namespace SuperCat.Pages.FriendFile
         }
         private void BackClick(object sender, RoutedEventArgs e)
         {
+            if (recreate)
+            {
+                NavigationService.Navigate(new MyList(user));
+                return;
+            }
             NavigationService.GoBack();
         }
         private void defouldFoneBord_MouseEnter(object sender, MouseEventArgs e)
@@ -246,15 +260,16 @@ namespace SuperCat.Pages.FriendFile
         private void defouldTrashBord_Click(object sender, MouseButtonEventArgs e)
         {
             e.Handled = true;
+            Border _case = (sender as Border)!;
 
-            string friendNick = (((sender as Border)!.Parent as Grid)!.Children[1] as Label)!.Content.ToString()??"";
+            string friendNick = GetName(_case);
 
             if (MessageBox.Show(("You want to remove \"" + friendNick + "\" from your friends list"), "Delete", MessageBoxButton.YesNo) != MessageBoxResult.Yes)
             {
                 return;
             }
 
-            int userId = Convert.ToInt32((((sender as Border)!.Parent as Grid)!.Children[3] as Label)!.Content);
+            int userId = GetId(_case);
             MyObjects.Friend locF = null!;
 
             foreach (var friend in myFriends)
@@ -304,15 +319,16 @@ namespace SuperCat.Pages.FriendFile
         private void AgreeFriend_Click(object sender, MouseButtonEventArgs e)
         {
             e.Handled = true;
+            Border _case = (sender as Border)!;
 
-            string friendNick = (((sender as Border)!.Parent as Grid)!.Children[1] as Label)!.Content.ToString() ?? "";
+            string friendNick = GetName(_case);
 
             if (MessageBox.Show(("You want to write \"" + friendNick + "\" in your friends list"), "Delete", MessageBoxButton.YesNo) != MessageBoxResult.Yes)
             {
                 return;
             }
 
-            int userId = Convert.ToInt32((((sender as Border)!.Parent as Grid)!.Children[3] as Label)!.Content);
+            int userId = GetId(_case);
             MyObjects.Friend locF = new MyObjects.Friend();
 
             foreach (var friend in thinkFriend)
@@ -380,10 +396,6 @@ namespace SuperCat.Pages.FriendFile
                         }
                         else if (chi.SfriendId == user.Id)
                         {
-                            if(chi.FfriendId == 1)
-                            {
-                                continue;
-                            }
                             if (LocateText.Text.Length > 0)
                             {
                                 string name = contextUser.UsersInfo.Where(x => x.Id == chi.FfriendId).First().Nikname;
@@ -416,10 +428,25 @@ namespace SuperCat.Pages.FriendFile
 
                     if (LocateText.Text.Length > 0)
                     {
-                        string name = chi.Nikname;
-                        if (name.Contains(LocateText.Text) )
+                        if (LocateAllBy.SelectedIndex == 0)
                         {
-                            userInfos.Add(chi);
+                            string name = chi.Nikname;
+                            if (name.Contains(LocateText.Text))
+                            {
+                                userInfos.Add(chi);
+                            }
+                        }
+                        else
+                        {
+                            if(!(int.TryParse(LocateText.Text, out int id)) || userInfos.Count() > 0)
+                            {
+                                break;
+                            }
+
+                            if(chi.Id == id)
+                            {
+                                userInfos.Add(chi);
+                            }
                         }
                     }
                 }
@@ -577,7 +604,7 @@ namespace SuperCat.Pages.FriendFile
             return _case;
         }
 
-        private void LocateText_KeyDown(object sender, KeyEventArgs e)
+        private async void LocateText_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.Key != Key.Enter)
             {
@@ -587,10 +614,26 @@ namespace SuperCat.Pages.FriendFile
             Keyboard.ClearFocus();
 
             GetFriends();
+
+            var originalColor = LocateText.Foreground;
+
+            if (userInfos.Count <= 0)
+            {
+                LocateText.Foreground = Brushes.Red;
+            }
+            else
+            {
+                LocateText.Foreground = Brushes.DarkGreen;
+            }
+
+            await Task.Delay(500);
+
+            LocateText.Foreground = originalColor;
         }
         private void AddFriend_Click(object sender, RoutedEventArgs e)
         {
             MyFriend.Visibility = Visibility.Visible;
+            LocateAllBy.Visibility = Visibility.Visible;
             AddFriend.Visibility = Visibility.Collapsed;
             LocateBy.Visibility = Visibility.Collapsed;
 
@@ -602,6 +645,7 @@ namespace SuperCat.Pages.FriendFile
         {
             AddFriend.Visibility = Visibility.Visible;
             LocateBy.Visibility = Visibility.Visible;
+            LocateAllBy.Visibility = Visibility.Collapsed;
             MyFriend.Visibility = Visibility.Collapsed;
 
             LocateText.Text = string.Empty;
@@ -611,14 +655,16 @@ namespace SuperCat.Pages.FriendFile
         private void SandFriendEmmale(object sender, RoutedEventArgs e)
         {
             e.Handled = true;
+            Border _case = (sender as Border)!;
 
-            var name = (((sender as Border)!.Parent as Grid)!.Children[1] as Label)!.Content.ToString();
+            var name = GetName(_case);
+
             if(MessageBox.Show("Do you want to send a friend request to \"" + name + "\"?", "Add friend", MessageBoxButton.YesNo) != MessageBoxResult.Yes)
             {
                 return;
             }
 
-            int friendId = Convert.ToInt32((((sender as Border)!.Parent as Grid)!.Children[3] as Label)!.Content);
+            int friendId = GetId(_case);
 
             using (var context = new SuperCatContext())
             {
@@ -641,6 +687,12 @@ namespace SuperCat.Pages.FriendFile
         private void defouldFoneBord_MouseDown(object sender, MouseButtonEventArgs e)
         {
             int friendId = Convert.ToInt32((((sender as Border)!.Child as Grid)!.Children[3] as Label)!.Content);
+
+            if(friendId == 1)
+            {
+                return;
+            }
+
             MyObjects.Friend friendCheck = null!;
 
             foreach (var fri in myFriends)
@@ -661,8 +713,48 @@ namespace SuperCat.Pages.FriendFile
 
             using (var context = new SuperCatContext())
             {
-                NavigationService.Navigate(new FriendFile.FriendList(context.UsersInfo.Where(x=>x.Id == friendId).First(), (user.Id == 1)));
+                NavigationService.Navigate(new FriendFile.FriendList(
+                    context.UsersInfo.Where(x=>x.Id == friendId).First(), (user.Id == 1)));
             }
+        }
+
+        private int GetId(Border _case)
+        {
+            return Convert.ToInt32(((_case.Parent as Grid)!.Children[3] as Label)!.Content);
+        }
+        private string GetName(Border _case)
+        {
+            return ((_case.Parent as Grid)!.Children[1] as TextBlock)!.Text.ToString();
+        }
+
+        private void defouldMailBord_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            e.Handled = true;
+            int friendId = GetId((sender as Border)!);
+            Friend friend = null!;
+
+            foreach (var fri in myFriends)
+            {
+                if ((fri.FfriendId == user.Id && fri.SfriendId == friendId) ||
+                    (fri.FfriendId == friendId && fri.SfriendId == user.Id))
+                {
+                    friend = fri;
+                    break;
+                }
+            }
+
+            if (friend == null)
+            {
+                MessageBox.Show("Sorry but now we have problem");
+                return;
+            }
+
+            NavigationService.Navigate(new GoChat(user.Id, friend.Id, friend.Messages));
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            GetFriends();
         }
     }
 }

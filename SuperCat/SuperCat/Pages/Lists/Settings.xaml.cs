@@ -24,6 +24,10 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Security.Cryptography;
 using SuperCat.GlobalFanc;
+using SuperCat.Pages.FriendFile;
+using MaterialDesignThemes.Wpf;
+using Microsoft.VisualBasic.ApplicationServices;
+using System.Security.RightsManagement;
 
 namespace SuperCat.Lists
 {
@@ -38,15 +42,17 @@ namespace SuperCat.Lists
         private DefoultImage defImg = new DefoultImage();
         private int indexImg = -1;
         Regex emailRegex = new Regex(@"^[a-zA-Z0-9]+@[a-zA-Z0-9]{3,5}\.[a-zA-Z0-9]{2,3}$");
+        private bool admin;
 
         public Settings()
         {
             InitializeComponent();
             user = new UserInfo();
         }
-        public Settings(UserInfo user) : this()
+        public Settings(UserInfo user, bool admin = false) : this()
         {
             FillArea(user);
+            this.admin = admin;
             GetGender();
             GetYear();
         }
@@ -126,7 +132,32 @@ namespace SuperCat.Lists
                 MessageBox.Show("This realy long Nickname");
                 return;
             }
-            user.Nikname = NiknameBoxText.Text;
+            using (var context = new SuperCatContext())
+            {
+                List<UserInfo> list = context.UsersInfo.Where(x => x.Nikname.Equals(NiknameBoxText.Text)).ToList();
+                if (list.Count >= 1)
+                {
+                    try
+                    {
+                        if (list.Count >= 2)
+                        {
+                            throw new Exception();
+                        }
+
+                        if (list[0].Id != user.Id)
+                        {
+                            throw new Exception();
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("This nickname already used");
+                        return;
+                    }                
+                }
+            }
+
+                    user.Nikname = NiknameBoxText.Text;
             saveNikname.Visibility = Visibility.Hidden;
 
             DoSave(NiknameBox, NiknameBoxText, ChangeNikname);
@@ -304,19 +335,25 @@ namespace SuperCat.Lists
             {
                 using (var context = new SuperCatContext())
                 {
-                    NavigationService.Navigate(new MyList(context.UsersInfo.Where(x => x.Id == user.Id).First()));
+                    if (admin)
+                    {
+                        NavigationService.Navigate(new AllFriends(context.UsersInfo.Where(x => x.Id == 1).First(), true));
+
+                        return;
+                    }
+                    NavigationService.Navigate(new MyList(context.UsersInfo.First(x => x.Id == user.Id)));
                 }
 
                 return;
             }
+
             NavigationService.GoBack();
         }
 
         private void DeleteAccount_Click(object sender, MouseButtonEventArgs e)
         {
-            var res = MessageBox.Show("Delete this account?", "hello", MessageBoxButton.YesNo);
-
-            if (res != MessageBoxResult.Yes)
+            
+            if (MessageBox.Show("Delete this account?", "hello", MessageBoxButton.YesNo) != MessageBoxResult.Yes)
             {
                 return;
             }
@@ -329,8 +366,89 @@ namespace SuperCat.Lists
 
                 contecst.SaveChanges();
             }
+            using (var contecst = new SuperCatContext())
+            {
+                foreach (var chi in contecst.Friends.ToList())
+                {
+                    if(chi.FfriendId == user.Id || chi.SfriendId == user.Id)
+                    contecst.Friends.Remove(chi);
+                }
 
-            NavigationService.Navigate(new LogPage());
+                contecst.SaveChanges();
+            }
+
+            using (var contextGroup = new SuperCatContext())
+            using (var contextUser = new SuperCatContext())
+            {
+                List<GroupInfo> group = contextGroup.GroupsInfo.Where(x => x.OwnerId == user.Id).ToList();
+                List<int> delInclude = new List<int>();
+                List<int> delJoin = new List<int>();
+
+                foreach (var chi in group)
+                {
+                    delInclude = HelpWork.UnboxStringByList(chi.GroupMembers, user.Id);
+                    delJoin = HelpWork.UnboxStringByList(chi.GroupJoin);
+
+
+                    foreach (var userId in delInclude)
+                    {
+                        string result = HelpWork.UnboxStringByString(
+                            contextUser.UsersInfo.Where(x => x.Id == userId).First().GroupsInclude, chi.Id);
+
+                        contextUser.UsersInfo.Where(x => x.Id == userId).First().GroupsInclude = result;
+                    }
+                    foreach (var userId in delJoin)
+                    {
+                        string result = HelpWork.UnboxStringByString(
+                            contextUser.UsersInfo.Where(x => x.Id == userId).First().GroupsThink, chi.Id);
+
+                        contextUser.UsersInfo.Where(x => x.Id == userId).First().GroupsThink = result;
+                    }
+
+                    contextGroup.GroupsInfo.Remove(chi);
+
+                    contextUser.SaveChanges();
+                    contextGroup.SaveChanges();
+                }
+            }
+            using (var context = new SuperCatContext())
+            using (var contextGroup = new SuperCatContext())
+            {
+                List<int> delIncl = new List<int>();
+                List<int> delJoin = new List<int>();
+
+                foreach (var chi in user.GroupsInclude.Split("."))
+                {
+                    if (int.TryParse(chi, out int i))
+                    {
+                        if (contextGroup.GroupsInfo.Where(x => x.Id == i).FirstOrDefault() != null)
+                        {
+                            delIncl.Add(i);
+                        }
+                    }
+                }
+                delJoin = HelpWork.UnboxStringByList(user.GroupsThink);
+
+                foreach (var GroupWhereMember in delIncl)
+                {
+                    contextGroup.GroupsInfo.Where(x => x.Id == GroupWhereMember).First().GroupMembers =
+                       HelpWork.UnboxStringByString(
+                        contextGroup.GroupsInfo.Where(x => x.Id == GroupWhereMember).First().GroupMembers,
+                        user.Id);
+                }
+                foreach (var GroupWhereJoin in delJoin)
+                {
+                    contextGroup.GroupsInfo.Where(x => x.Id == GroupWhereJoin).First().GroupJoin =
+                       HelpWork.UnboxStringByString(
+                        contextGroup.GroupsInfo.Where(x => x.Id == GroupWhereJoin).First().GroupJoin,
+                        user.Id);
+                }
+
+                context.SaveChanges();
+                contextGroup.SaveChanges();
+            }
+
+                NavigationService.Navigate(new LogPage());
         }
         private void GoOut_MouseDown(object sender, MouseButtonEventArgs e)
         {

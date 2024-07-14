@@ -225,14 +225,19 @@ namespace SuperCat.Log
         private UserInfo SaveInfo(UserInfo userInfo)
         {
             using (var context = new SuperCatContext())
-            using (var contextFriend = new SuperCatContext())
             {
                 context.UsersInfo.Add(userInfo);
-                contextFriend.Friends.Add(new Friend(userInfo.Id));
 
                 context.SaveChanges();
+            }
+            using (var contextFriend = new SuperCatContext())
+            using (var context = new SuperCatContext())
+            {
+                contextFriend.Friends.Add(new Friend(context.UsersInfo.Where(x=>x.Nikname == userInfo.Nikname).First().Id));
 
-                return context.UsersInfo.Where(us => us.Nikname.Equals(userInfo.Nikname)).ToList().First();
+                contextFriend.SaveChanges();
+
+                return context.UsersInfo.Where(us => us.Nikname.Equals(userInfo.Nikname)).First();
             }
         }
     }

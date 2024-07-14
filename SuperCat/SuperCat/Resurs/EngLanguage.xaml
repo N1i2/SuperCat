@@ -94,6 +94,34 @@
     <v:String x:Key="YourRequestsText">Your Requests</v:String>
     <v:String x:Key="ThinkAboutFriendText">Think About Friend</v:String>
     <v:String x:Key="EmptyImageText">Not Images</v:String>
+    
+    <!-- Search -->
+    <v:String x:Key="ByNicknameText">By Nickname</v:String>
+    <v:String x:Key="ByIdText">By Id</v:String>
+    
+    <!-- Groups -->
+    <v:String x:Key="MyGroupsText">Your Groups</v:String>
+    <v:String x:Key="JoinGroupText">Join a Group</v:String>
+    <v:String x:Key="GroupNameText">Group Name:</v:String>
+    <v:String x:Key="CreateGroupText">Create new Group</v:String>
+    <v:String x:Key="UpdateGroupText">Update Group</v:String>
+    <v:String x:Key="AllGroupsText">All Groups</v:String>
+    <v:String x:Key="InviteText">Invite a participant</v:String>
+    <v:String x:Key="UsersText">Users</v:String>
+    <v:String x:Key="YourGroupsText">Your Groups</v:String>
+    <v:String x:Key="NotYourGroupsText">Not Your Groups</v:String>
+    <v:String x:Key="YouOwnerText">You're a owner</v:String>
+    <v:String x:Key="YouMemberText">You're a member</v:String>
+    <v:String x:Key="YouNotMemberText">You're not a member</v:String>
+    <v:String x:Key="EmptyGroupListText">Group List is Empty</v:String>
+    <v:String x:Key="NumberSeatsText">Number of Seats:</v:String>
+    
+    <!-- Chats -->
+    <v:String x:Key="YouFriendTex">Chat with </v:String>
+    <v:String x:Key="YouGroupTex">Group </v:String>
+    <v:String x:Key="WritePleaseText">Write ...</v:String>
+    <v:String x:Key="AdminMessageText">Сomplaints</v:String>
+    <v:String x:Key="FromWhom">From whom</v:String>
 
 
     <!-- Message Text -->

@@ -11,7 +11,6 @@ namespace SuperCat.Context
         public DbSet<MyImage> MyImages { get; set; } = null!;
         public DbSet<Friend> Friends { get; set; } = null!;
         public DbSet<GroupInfo> GroupsInfo { get; set; } = null!;
-        public DbSet<GroupMember> GroupMembers { get; set; } = null!;
         public DbSet<ChatInfo> ChatsInfo { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -24,7 +23,6 @@ namespace SuperCat.Context
             modelBuilder.Entity<MyImage>().Property(x => x.Id).ValueGeneratedOnAdd();
             modelBuilder.Entity<Friend>().Property(x => x.Id).ValueGeneratedOnAdd();
             modelBuilder.Entity<GroupInfo>().Property(x => x.Id).ValueGeneratedOnAdd();
-            modelBuilder.Entity<GroupMember>().Property(x => x.Id).ValueGeneratedOnAdd();
             modelBuilder.Entity<ChatInfo>().Property(x => x.Id).ValueGeneratedOnAdd();
         }
     }

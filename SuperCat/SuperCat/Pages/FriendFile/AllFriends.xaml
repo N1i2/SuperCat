@@ -33,7 +33,7 @@
     </Page.Resources>
 
     <Viewbox>
-        <Grid Height="450" Width="800">
+        <Grid Height="450" Width="800" Loaded="Grid_Loaded">
             <Label VerticalAlignment="top"
                    HorizontalAlignment="Center"
                    Content="{DynamicResource YourFriendText}"
@@ -102,13 +102,25 @@
                 <ComboBoxItem Content="{DynamicResource YourRequestsText}"/>
                 <ComboBoxItem Content="{DynamicResource ThinkAboutFriendText}"/>
             </ComboBox>
+            <ComboBox x:Name="LocateAllBy"
+                      Margin="600, 123, 32, 297" 
+                      Visibility="Collapsed"
+                      SelectionChanged="LocateBy_SelectionChanged"
+                      FontSize="16">
+                <ComboBoxItem IsSelected="True" Content="{DynamicResource ByNicknameText}"/>
+                <ComboBoxItem Content="{DynamicResource ByIdText}"/>
+            </ComboBox>
 
-            <ScrollViewer Margin="30, 170, 30, 30" Height="250" Width="720" VerticalScrollBarVisibility="Auto" >
+            <ScrollViewer Margin="30, 170, 30, 30" 
+                          Height="250" Width="720" 
+                          VerticalScrollBarVisibility="Auto" >
                 <ScrollViewer.Resources>
                     <Style TargetType="ScrollBar">
-                        <Setter Property="Width" Value="16"/>
+                        <Setter Property="Width" Value="10"/>
+                        <Setter Property="MinWidth" Value="1"/>
                     </Style>
                 </ScrollViewer.Resources>
+
                 <StackPanel x:Name="MyFriendArray" Orientation="Vertical">
                     <Border BorderBrush="Black"
                             BorderThickness="2"
@@ -127,20 +139,21 @@
                                     BorderBrush="Black">
                                 <Image x:Name="defouldIconImage" Stretch="UniformToFill" Source="../../Image/icon.png"/>
                             </Border>
-                            <Label x:Name="defouldNicknameLabel"
+                            <TextBlock x:Name="defouldNicknameBlock"
                                 VerticalAlignment="Top" 
-                                       Style="{DynamicResource LogerText}"
+                                       Style="{DynamicResource LogerTextBlock}"
                                        HorizontalAlignment="Left"
-                                       Content="NickName"
+                                       Text="NickName"
                                        FontSize="20"
                                        Margin="160, 0, 0, 0"
                                        Width="210"/>
-                            <Label x:Name="defouldRealNameLabel"
+                            <TextBlock x:Name="defouldRealNameBlock"
                                 VerticalAlignment="Bottom"
-                                       Style="{DynamicResource HalphBlackText}"
+                                       Style="{DynamicResource HalphBlackTextBlock}"
                                        HorizontalAlignment="Left"
-                                       Content="NickName"
-                                   Margin="160, 0, 0, 0"
+                                       Text="NickName"
+                                       Margin="160, 0, 0, 0"
+                                       TextTrimming ="CharacterEllipsis"
                                        FontSize="18" 
                                        Width="210"/>
                             <Label x:Name="defouldIdLabel"
@@ -161,7 +174,8 @@
                                     Style="{DynamicResource IDBorder}" Padding="3"
                                     Margin="450, 0, 0, 0" BorderThickness="1" BorderBrush="Black"
                                     x:Name="defouldMailBord"
-                                    Cursor="Hand">
+                                    Cursor="Hand" MouseDown="defouldMailBord_MouseDown"
+                                    >
                                 <Image x:Name="defouldMailImage" Stretch="UniformToFill" Source="../../Image/haveMail.png"/>
                             </Border>
                             <Border Height="40" Width="40" 
@@ -169,7 +183,7 @@
                                     Margin="450, 0, 0, 0" BorderThickness="1" BorderBrush="Black"
                                     x:Name="defouldYesBord"
                                     Cursor="Hand">
-                                <Image x:Name="defouldYesImage" Stretch="UniformToFill" Source="../../Image/allCorrect.png"/>
+                                <Image x:Name="defouldYesImage" Stretch="UniformToFill" Source="../../Image/allCorrect.png" HorizontalAlignment="Left" Width="32"/>
                             </Border>
                             <Border Height="40" Width="40" 
                                     x:Name="defouldTrashBord"

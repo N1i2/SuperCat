@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MaterialDesignThemes.Wpf;
+using Microsoft.VisualBasic.ApplicationServices;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.RightsManagement;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -12,6 +10,64 @@ namespace SuperCat.GlobalFanc
 {
     static class HelpWork
     {
+        public static string RecreateListByString(List<string> groupInclude, int without = -1)
+        {
+            string result = string.Empty;
+
+            foreach (var ch in groupInclude)
+            {
+                if (int.TryParse(ch, out int i) && i != without)
+                {
+                    result += "." + i;
+                }
+            }
+
+            return result;
+        }
+        public static string UnboxListByString(List<int> groupInclude, int without = -1)
+        {
+            string result = string.Empty;
+
+            foreach (var ch in groupInclude)
+            {
+                if(ch != without)
+                {
+                    result += "." + ch;
+                }
+            }
+
+            return result;
+        }
+        public static List<int> UnboxStringByList(string groupInclude, int without = -1)
+        {
+            List<int> result = new List<int>();
+
+            foreach (var ch in groupInclude.Split("."))
+            {
+                if (int.TryParse(ch, out int i) && i != without)
+                {
+                    result.Add(i);
+                }
+            }
+
+            return result;
+        }
+
+        public static string UnboxStringByString(string userInclude, int without = -1)
+        {
+            string result = string.Empty;
+
+            foreach (var chi in userInclude.Split("."))
+            {
+                if (int.TryParse(chi, out int i) && i != without)
+                {
+                    result += "." + i;
+                }
+            }
+
+            return result;
+        }
+
         public static byte[] GetBytesImageSource(ImageSource imageSource)
         {
             var bitmapSource = imageSource as BitmapSource;

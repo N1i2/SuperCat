@@ -15,6 +15,7 @@ namespace SuperCat.MyObjects
         public int FfriendId { get; set; }
         public int SfriendId { get; set; }
         public int? WhoThink { get; set; } = null!;
+        public string Messages { get; set; } = string.Empty;
         public Friend()
         {
             

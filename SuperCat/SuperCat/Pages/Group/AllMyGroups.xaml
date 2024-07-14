@@ -1,0 +1,212 @@
+﻿<Page x:Class="SuperCat.Pages.Group.AllMyGroups"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AllMyGroups"
+      Style="{DynamicResource MainFone}">
+
+    <Page.Resources>
+        <ControlTemplate x:Key="ListButton" TargetType="Button">
+            <Border x:Name="ListButtonBorder" 
+             Style="{DynamicResource ProfilStyle}"
+             CornerRadius="10"
+                 Cursor="Hand">
+                <ContentControl Content="{TemplateBinding Content}" 
+                         HorizontalAlignment="Center" 
+                         VerticalAlignment="Center"
+                         Style="{DynamicResource ButtonContent}"
+                         FontSize="20"
+                                 />
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="ListButtonBorder" Property="Background" Value="#113"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="ListButtonBorder" Property="Background" Value="Orange"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Page.Resources>
+
+    <Viewbox>
+        <Grid Height="450" Width="800" Loaded="Grid_Loaded">
+            <Label VerticalAlignment="top"
+                   HorizontalAlignment="Center"
+                   Content="{DynamicResource MyGroupsText}"
+                   Style="{DynamicResource LogerText}"
+                   FontSize="30"
+                   Margin="0, 30, 0, 0"/>
+            <Button Margin="40,80,410,335"
+                    x:Name="CreateGroup"
+                    Height="35"
+                    Template="{DynamicResource ListButton}"
+                    Content="{DynamicResource CreateGroupText}" Click="createGroup_Click"/>
+            <Button Margin="410,80,40,335"
+                    x:Name="joinGroup"
+                    Height="35"
+                    Template="{DynamicResource ListButton}"
+                    Content="{DynamicResource JoinGroupText}" Click="joinGroup_Click"/>
+            <Button Margin="40,80,40,335"
+                    x:Name="YourGroups"
+                    Height="35"
+                    Visibility="Collapsed"
+                    Template="{DynamicResource ListButton}"
+                    Content="{DynamicResource YourGroupsText}" Click="YourGroups_Click"/>
+            <Image Stretch="Fill"
+                   x:Name="SearchImage"
+                    Source="../../Image/search.png"
+                   Margin="50, 128, 730, 302"/>
+            <Border x:Name="LocateBord"
+                    Style="{DynamicResource NeedLocateStyle}"
+                    Margin="42, 123, 220, 297">
+                <TextBox x:Name="LocateText"
+                        Margin="40, 2, 5, 2"
+                        FontSize="18"
+                        Style="{DynamicResource LiyPasswordboxStyle}"
+                        BorderThickness="0" 
+                        KeyDown="LocateText_KeyDown" 
+                        LostFocus="LocateText_LostFocus" />
+            </Border>
+            <ComboBox x:Name="LocateBy"
+                      Margin="600, 123, 40, 297" 
+                      FontSize="16" SelectionChanged="LocateBy_SelectionChanged">
+                <ComboBoxItem Content="{DynamicResource AllGroupsText}"/>
+                <ComboBoxItem Content="{DynamicResource YouOwnerText}"/>
+                <ComboBoxItem Content="{DynamicResource YouMemberText}"/>
+                <ComboBoxItem Content="{DynamicResource YouNotMemberText}"/>
+            </ComboBox>
+            <ComboBox x:Name="LocateAllBy"
+                      Margin="600, 123, 40, 297" 
+                      Visibility="Collapsed"
+                      FontSize="16" SelectionChanged="LocateBy_SelectionChanged">
+                <ComboBoxItem IsSelected="True" Content="{DynamicResource ByNicknameText}"/>
+                <ComboBoxItem Content="{DynamicResource ByIdText}"/>
+            </ComboBox>
+
+            <Label x:Name="EmptyText"
+                   VerticalAlignment="Top" HorizontalAlignment="Center"
+                   Content="{DynamicResource EmptyGroupListText}"
+                   Visibility="Collapsed"
+                   Margin="0, 180, 0, 0">
+                <Label.Style>
+                    <Style TargetType="Label">
+                        <Style.Triggers >
+                            <DataTrigger Binding="{Binding ElementName=MyGroupArray, Path=Children.Count}" Value="0">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Label.Style>
+            </Label>
+
+            <ScrollViewer Margin="30, 170, 30, 30" 
+              Height="250" Width="720" 
+              VerticalScrollBarVisibility="Auto" >
+                <ScrollViewer.Resources>
+                    <Style TargetType="ScrollBar">
+                        <Setter Property="Width" Value="10"/>
+                        <Setter Property="MinWidth" Value="1"/>
+                    </Style>
+                </ScrollViewer.Resources>
+
+                <StackPanel x:Name="MyGroupArray" Orientation="Vertical">
+                    <Border BorderBrush="Black"
+                        BorderThickness="2"
+                        Height="60"
+                        CornerRadius="20"
+                        x:Name="defouldFoneBord"
+                        Margin = "0, 0, 0, 10"
+                            MouseDown="GoIntoGroupMessage">
+                        <Grid>
+                            <Border x:Name="defouldIconBord" 
+                                Height="40" 
+                                Width="40" 
+                                Margin="0, 0, 550, 0"
+                                BorderThickness="1"
+                                BorderBrush="Black">
+                                <Image x:Name="defouldIconImage" Stretch="UniformToFill" Source="../../Image/icon.png"/>
+                            </Border>
+                            <TextBlock x:Name="defouldGroupNameBlock"
+                                VerticalAlignment="Top" 
+                                Style="{DynamicResource LogerTextBlock}"
+                                HorizontalAlignment="Left"
+                                Text="GroupName hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+                                FontSize="20"
+                                
+                                Margin="160, 0, 0, 0"
+                                Width="210"/>
+                            <TextBlock x:Name="defouldOwnerBlock"
+                                VerticalAlignment="Bottom" 
+                                Style="{DynamicResource HalphBlackTextBlock}"
+                                HorizontalAlignment="Left"
+                                Text="GroupName"
+                                FontSize="18"
+                                Margin="160, 0, 0, 0"
+                                Width="210"/>
+                            <Label x:Name="defouldSizeBlock"
+                                VerticalAlignment="Top"
+                                Style="{DynamicResource HalphBlackText}"
+                                HorizontalAlignment="Right"
+                                Content="{DynamicResource YouNotMemberText}"
+                                Margin="0,0,140,0"
+                                FontSize="18" 
+                                Width="177"/>
+                            <Label x:Name="defouldIdLabel"
+                                VerticalAlignment="Bottom"
+                                Style="{DynamicResource HalphBlackText}"
+                                HorizontalAlignment="Right"
+                                Content="0000000000"
+                                Margin="200, 0, 140, 0"
+                                FontSize="18"/>
+
+                            <Border Height="40" Width="40" 
+                                x:Name="defouldTrashBord"
+                                Style="{DynamicResource IDBorder}" Padding="3"
+                                Margin="550, 0, 0, 0"
+                                BorderThickness="1"
+                                Cursor="Hand"
+                                BorderBrush="Black" 
+                                    MouseDown="defouldTrashBord_Click">
+                                <Image x:Name="defouldTrashImage" Stretch="UniformToFill" Source="../../Image/trash.png"/>
+                            </Border>
+                            <Border Height="40" Width="40" 
+                                x:Name="defouldJoinBord"
+                                Style="{DynamicResource IDBorder}" Padding="3"
+                                Margin="550, 0, 0, 0"
+                                BorderThickness="1"
+                                Cursor="Hand"
+                                BorderBrush="Black" 
+                                    MouseDown="defouldJoinBord_MouseDown" >
+                                <Image x:Name="defouldJoinImage" Stretch="UniformToFill" Source="../../Image/addFriend.png"/>
+                            </Border>
+                            <Border Height="40" Width="40" 
+                                x:Name="defouldGoOutBord"
+                                Style="{DynamicResource IDBorder}" Padding="3"
+                                Margin="550, 0, 0, 0"
+                                BorderThickness="1"
+                                Cursor="Hand"
+                                BorderBrush="Black" 
+                                    MouseDown="defouldJoinBord_MouseDown" >
+                                <Image x:Name="defouldGoOutImage" Stretch="UniformToFill" Source="../../Image/GoOutGroup.png"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+
+            <Button
+                x:Name="backBut"
+                Margin="80,50,690,370"
+                Template="{DynamicResource backTemp}"
+                Click="BackClick">
+                <Button.RenderTransform>
+                    <RotateTransform Angle="90"/>
+                </Button.RenderTransform>
+            </Button>
+        </Grid>
+    </Viewbox>
+</Page>

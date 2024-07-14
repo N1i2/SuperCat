@@ -16,14 +16,17 @@
     <None Remove="Image\eye.png" />
     <None Remove="Image\eye2.png" />
     <None Remove="Image\GoOut.png" />
+    <None Remove="Image\GoOutGroup.png" />
     <None Remove="Image\haveMail.png" />
     <None Remove="Image\icon.png" />
     <None Remove="Image\icon\1_feedMe.png" />
     <None Remove="Image\icon\2_love.png" />
     <None Remove="Image\icon\3_cat.png" />
     <None Remove="Image\icon\4_waitFone.png" />
+    <None Remove="Image\icon\Groups.png" />
     <None Remove="Image\Locate.png" />
     <None Remove="Image\search.png" />
+    <None Remove="Image\SendMessage.png" />
     <None Remove="Image\Settings.png" />
     <None Remove="Image\trash.png" />
     <None Remove="Image\YouHaveMail.png" />
@@ -61,6 +64,9 @@
     <Resource Include="Image\GoOut.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Image\GoOutGroup.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Image\haveMail.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -79,10 +85,16 @@
     <Resource Include="Image\icon\4_waitFone.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Image\icon\Groups.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Image\Locate.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Image\search.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\SendMessage.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Image\Settings.png">

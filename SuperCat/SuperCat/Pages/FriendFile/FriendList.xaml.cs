@@ -18,26 +18,26 @@ namespace SuperCat.Pages.FriendFile
     {
         private UserInfo user;
         private List<MyImage> images;
+        private AllFriends allFriends = null!;
         private bool admin;
-        
+
         public FriendList()
         {
             InitializeComponent();
             user = new UserInfo();
-            images = new List<MyImage>(); 
+            images = new List<MyImage>();
         }
-        public FriendList(UserInfo user, bool admin):this()
+        public FriendList(UserInfo user, bool admin) : this()
         {
             this.user = user;
             this.admin = admin;
 
             if (admin)
             {
-                AddImageButton.Visibility = Visibility.Visible;
                 SettingsButton.Visibility = Visibility.Visible;
             }
 
-            CatImage.Source = HelpWork.LoadImageFromByte(this.user.Image??new byte[0]);
+            CatImage.Source = HelpWork.LoadImageFromByte(this.user.Image ?? new byte[0]);
             FillList();
             PaintImages();
         }
@@ -51,22 +51,22 @@ namespace SuperCat.Pages.FriendFile
 
             foreach (var img in images)
             {
-                ImageArea.Items.Insert(1, img.Image);
+                ImageArea.Items.Insert(0, img.Image);
             }
 
-            if(!admin && images.Count <= 0) 
+            if(images.Count <= 0)
             {
                 emptyImage.Visibility = Visibility.Visible;
             }
         }
         private void FillList()
         {
-            if(user.Nikname != null)
+            if (user.Nikname != null)
                 nicknameBox.Content = user.Nikname;
-            if(user.RealName != null)
+            if (user.RealName != null)
                 realNameBox.Content = user.RealName;
             if (user.Gender != null)
-                genderBox.Content = (user.Gender == "m")?"Man":"Woman";
+                genderBox.Content = (user.Gender == "m") ? "Man" : "Woman";
             if (user.Email != null)
                 emailBox.Content = user.Email;
             if (user.Birthday != null)
@@ -75,31 +75,7 @@ namespace SuperCat.Pages.FriendFile
 
         private void GoSettings(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            NavigationService.Navigate(new Settings(user));
-        }
-
-        private void AddImage_Click(object sender, RoutedEventArgs e)
-        {
-            var openFileDialog = new OpenFileDialog
-            {
-                Filter = "PNG Images (*.png)|*.png",
-                Multiselect = false
-            };
-
-            if (openFileDialog.ShowDialog() == true)
-            {
-                var imageBytes = HelpWork.GetBytesImageSource(new BitmapImage(new Uri(openFileDialog.FileName)));
-
-                using (var context = new SuperCatContext())
-                {
-                    context.MyImages.Add(new MyImage(imageBytes, user.Id));
-
-                    context.SaveChanges();
-                }
-
-
-                ImageArea.Items.Insert(1, imageBytes);
-            }
+            NavigationService.Navigate(new Settings(user, admin));
         }
 
         private void ImageArea_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -110,7 +86,12 @@ namespace SuperCat.Pages.FriendFile
                 ImageFoun.Visibility = Visibility.Visible;
                 ImageBoreder.Visibility = Visibility.Visible;
                 CloseFullImage.Visibility = Visibility.Visible;
-                DeleteImage.Visibility = Visibility.Visible;
+
+                if (admin)
+                {
+                    DeleteImage.Visibility = Visibility.Visible;
+                }
+
                 ImageFoun.Focus();
             }
         }
@@ -155,18 +136,7 @@ namespace SuperCat.Pages.FriendFile
             }
 
             ImageArea.Items.Clear();
-            Button but = new Button
-            {
-                Name = "AddImageButton",
-                Content = System.Windows.Application.Current.Resources["AddImageText"] as string,
-                Margin = new Thickness(10),
-                Cursor = Cursors.Hand,
-                Width = 100,
-                Height = 100
-            };
-            but.Click += AddImage_Click;
-            ImageArea.Items.Insert(0, but);
-
+            
             PaintImages();
 
             CloseFullImage_Click(sender, e);
@@ -174,14 +144,14 @@ namespace SuperCat.Pages.FriendFile
 
         private void Page_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            if(!(DeleteImage.Visibility == Visibility.Visible
-                && (e.Key == System.Windows.Input.Key.Delete 
+            if (!(DeleteImage.Visibility == Visibility.Visible
+                && (e.Key == System.Windows.Input.Key.Delete
                 || e.Key == System.Windows.Input.Key.Escape)))
             {
                 return;
             }
 
-            if(e.Key == System.Windows.Input.Key.Delete)
+            if (e.Key == System.Windows.Input.Key.Delete)
             {
                 DeleteImage_Click(sender, e);
             }
@@ -190,6 +160,17 @@ namespace SuperCat.Pages.FriendFile
                 CloseFullImage_Click(sender, e);
             }
         }
+
+        private void FriendsButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (allFriends == null)
+            {
+                allFriends = new AllFriends(user, false);
+            }
+
+            NavigationService.Navigate(allFriends);
+        }
+
         private void BackClick(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();

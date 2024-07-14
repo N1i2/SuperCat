@@ -1,0 +1,129 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:v ="clr-namespace:System;assembly=mscorlib">
+
+    <v:String x:Key="WelcomHeader">Приветствуем в "Super cat"</v:String> 
+    <v:String x:Key="SignIn">Войти</v:String> 
+    <v:String x:Key="CreateAccount">Создать новый аккаунт</v:String>
+    <v:String x:Key="lableNikname">Ваш никнейм</v:String>
+    <v:String x:Key="lablePassword">Ваш пароль</v:String>
+    <v:String x:Key="NiknameOrPasswordError">Никнейм или пароль введены неверно</v:String>
+    <v:String x:Key="ShowPasswordText">Показать пароль</v:String>
+
+    <!-- Создать учетную запись -->
+    <v:String x:Key="Createheader">Создать аккаунт</v:String>
+    <v:String x:Key="RegistrationNiknameBox">Ваш никнейм</v:String>
+    <v:String x:Key="RegistrationPasswordBox">Ваш пароль</v:String>
+    <v:String x:Key="RegistrationRealNameBox">Ваше имя</v:String>
+    <v:String x:Key="RegistrationBirthdayBox">Ваш день рождения</v:String>
+    <v:String x:Key="RegistrationGenderBox">Ваш пол</v:String>
+    <v:String x:Key="RegistrationEmailBox">Ваш e-mail</v:String>
+    <v:String x:Key="RegistrationInformationBox">Некоторая информация о вас</v:String>
+    <v:String x:Key="CreateButton">Создать аккаунт</v:String>
+    <v:String x:Key="MandatoryText">Обязательная информация</v:String>
+    <v:String x:Key="OptionalText">Опциональная информация</v:String>
+    <v:String x:Key="NextText">Далее</v:String>
+    <v:String x:Key="NiknameError">Этот никнейм уже существует</v:String>
+    <v:String x:Key="NiknameErrorLength">Этот никнейм слишком длинный</v:String> 
+    <v:String x:Key="SmallPasswordError">Этот пароль маленький</v:String>
+    <v:String x:Key="BigPasswordError">Этот пароль большой</v:String>
+    <v:String x:Key="PasswordError">Пароль должен содержать число и символы</v:String>
+    <v:String x:Key="SmallRealNameError">Ваше имя слишком маленькое</v:String>
+    <v:String x:Key="BigRealNameError">Ваше имя слишком длинное</v:String>
+    <v:String x:Key="NumberRealNameError">Имя не может содержать цифры</v:String>
+    <v:String x:Key="EmptyError">Вы имеете пустую область</v:String>
+    <v:String x:Key="ProblemWithNikname">У нас проблема с ником</v:String>
+    <v:String x:Key="ProblemWithPassword">У нас проблема с паролем</v:String>
+    <v:String x:Key="ProblemWithRealName">У нас проблема с настоящим именем</v:String> 
+
+    <!-- Конец создания -->
+    <v:String x:Key="NeedBirthday">День рождения</v:String>
+    <v:String x:Key="NeedGenderText">Пол</v:String>
+    <v:String x:Key="NeedEmailText">E-mail</v:String>
+    <v:String x:Key="Day">День</v:String>
+    <v:String x:Key="Month">Месяц</v:String>
+    <v:String x:Key="Year">Год</v:String>
+    <v:String x:Key="Man">Мужчина</v:String>
+    <v:String x:Key="Woman">Женщина</v:String>
+    <v:String x:Key="NoGender">Без пола</v:String>
+    <v:String x:Key="EmailError">Некорректный e-mail (пример SuperCat15@gmail.com)</v:String>
+
+    <!-- Списки -->
+    <v:String x:Key="ImageText">Изображение:</v:String>
+    <v:String x:Key="RealName">Реальное имя:</v:String>
+    <v:String x:Key="Nickname">Никнейм:</v:String>
+    <v:String x:Key="DataBirth">Годы:</v:String>
+    <v:String x:Key="GenderText">Пол:</v:String>
+    <v:String x:Key="e-mail">e-mail:</v:String>
+    <v:String x:Key="Password">Пароль:</v:String>
+    <v:String x:Key="ID">Ваш ID:</v:String>
+    <v:String x:Key="EmptyBox">Нет информации</v:String>
+    <v:String x:Key="DeleteAccount">Удалить</v:String>
+    <v:String x:Key="CloseImage">Закрыть</v:String>
+    <v:String x:Key="GoOutAccount">Выйти</v:String>
+    <v:String x:Key="NewImageText">Новое изображение</v:String>
+    <v:String x:Key="AddImageText">Добавить изображение</v:String>
+    <v:String x:Key="ChangeImageText">>> Изменить изображение >></v:String>
+    <v:String x:Key="DefoultImage">Дефолт изображения</v:String>
+    <v:String x:Key="OldPasswordText">Старый пароль</v:String>
+    <v:String x:Key="NewPasswordText">Новый пароль</v:String>
+    <v:String x:Key="FriendsText">Друзья</v:String>
+    <v:String x:Key="GroupsText">Группы</v:String>
+
+    <v:String x:Key="ChangeNickname">Изменить никнейм</v:String>
+    <v:String x:Key="ChangeRealName">Изменить имя</v:String>
+    <v:String x:Key="ChangeGender">Изменить пол</v:String>
+    <v:String x:Key="ChangeEmail">Изменить e-mail</v:String>
+    <v:String x:Key="ChangeBirthday">Изменить день рождения</v:String>
+    <v:String x:Key="ChangePassword">Изменить пароль</v:String>
+
+    <v:String x:Key="SaveNickname">Сохранить никнейм</v:String>
+    <v:String x:Key="SaveRealName">Сохранить имя</v:String> 
+    <v:String x:Key="SaveGender">Сохранить пол</v:String>
+    <v:String x:Key="SaveEmail">Сохранить электронную почту</v:String>
+    <v:String x:Key="SaveBirthday">Сохранить день рождения</v:String>
+
+    <!-- Друзья -->
+    <v:String x:Key="AddFriend">Добавить нового друга</v:String>
+    <v:String x:Key="YourFriendText">Ваши друзья</v:String>
+    <v:String x:Key="EmptyFriendListText">Список друзей пуст</v:String>
+    <v:String x:Key="ConiderationText">На рассмотрении</v:String>
+    <v:String x:Key="AllFriendText">Все друзья</v:String>
+    <v:String x:Key="YourRequestsText">Ваши запросы</v:String>
+    <v:String x:Key="ThinkAboutFriendText">Думаете о дружбе</v:String>
+    <v:String x:Key="EmptyImageText">Нет изображений</v:String>
+
+    <!-- Поиск -->
+    <v:String x:Key="ByNicknameText">По никнейму</v:String>
+    <v:String x:Key="ByIdText">По Id</v:String>
+
+    <!-- Группы -->
+    <v:String x:Key="MyGroupsText">Ваши группы</v:String>
+    <v:String x:Key="JoinGroupText">Вступить в группу</v:String>
+    <v:String x:Key="GroupNameText">Название группы:</v:String>
+    <v:String x:Key="CreateGroupText">Создать новую группу</v:String>
+    <v:String x:Key="UpdateGroupText">Обновить группу</v:String>
+    <v:String x:Key="AllGroupsText">Все группы</v:String>
+    <v:String x:Key="InviteText">Пригласить участника</v:String>
+    <v:String x:Key="UsersText">Пользователи</v:String>
+    <v:String x:Key="YourGroupsText">Ваши группы</v:String>
+    <v:String x:Key="NotYourGroupsText">Не ваши группы</v:String>
+    <v:String x:Key="YouOwnerText">Вы владелец</v:String>
+    <v:String x:Key="YouMemberText">Вы участник</v:String>
+    <v:String x:Key="YouNotMemberText">Вы не участник</v:String>
+    <v:String x:Key="EmptyGroupListText">Список групп пуст</v:String>
+    <v:String x:Key="NumberSeatsText">Количество мест:</v:String>
+
+    <!-- Чаты -->
+    <v:String x:Key="YouFriendTex">Чат с</v:String>
+    <v:String x:Key="YouGroupTex">Группа</v:String>
+    <v:String x:Key="WritePleaseText">Пишите ...</v:String>
+    <v:String x:Key="AdminMessageText">Жалобы</v:String>
+    <v:String x:Key="FromWhom">От кого</v:String>
+
+
+    <!-- Текст сообщения -->
+    <v:String x:Key="TestMessage">Здравствуйте</v:String>
+    <!-- Тест в файле Settings в функции GoOut_MouseDown --> 
+
+</ResourceDictionary>

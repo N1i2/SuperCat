@@ -56,13 +56,13 @@
                 VerticalAlignment="Top"
                 HorizontalAlignment="Left"
                 Style="{DynamicResource ListsText}"
-                       Margin="160,30,0,0"/>
+                       Margin="160,65,0,0"/>
             <Label x:Name="nicknameBox"
                    VerticalAlignment="Top"
                    HorizontalAlignment="Left"
                    Style="{DynamicResource ListsText}"
                    Content="{DynamicResource EmptyBox}"
-                   Margin="250, 30, 0, 0"
+                   Margin="250, 65, 0, 0"
                    MaxWidth="450"/>
 
             <Label
@@ -70,13 +70,13 @@
                 VerticalAlignment="Top"
                 HorizontalAlignment="Left"
                 Style="{DynamicResource ListsText}"
-                       Margin="160,78,0,0"/>
+                       Margin="160,83,0,0"/>
             <Label x:Name="realNameBox"
                    VerticalAlignment="Top"
                    HorizontalAlignment="Left"
                    Style="{DynamicResource ListsText}"
                    Content="{DynamicResource EmptyBox}"
-                   Margin="250,78,0,0"
+                   Margin="250,83,0,0"
                    MaxWidth="450"/>
 
             <Label
@@ -84,13 +84,13 @@
                 Style="{DynamicResource ListsText}"
                 VerticalAlignment="Top"
                 HorizontalAlignment="Left"
-                Margin="160, 95, 0, 0"/>
+                Margin="160, 100, 0, 0"/>
             <Label x:Name="YearsBox"
                    VerticalAlignment="Top"
                    HorizontalAlignment="Left"
                    Style="{DynamicResource ListsText}"
                    Content="{DynamicResource EmptyBox}"
-                   Margin="250, 95, 0, 0"
+                   Margin="250, 100, 0, 0"
                    MaxWidth="450"/>
 
             <Label
@@ -98,13 +98,13 @@
                 Style="{DynamicResource ListsText}"
                 VerticalAlignment="Top"
                 HorizontalAlignment="Left"
-                Margin="160,112,0,0"/>
+                Margin="160,117,0,0"/>
             <Label x:Name="genderBox"
                    VerticalAlignment="Top"
                    HorizontalAlignment="Left"
                    Style="{DynamicResource ListsText}"
                    Content="{DynamicResource EmptyBox}"
-                   Margin="250,112,0,0"
+                   Margin="250,117,0,0"
                    MaxWidth="450"/>
 
             <Label
@@ -112,13 +112,13 @@
                 Style="{DynamicResource ListsText}"
                 VerticalAlignment="Top"
                 HorizontalAlignment="Left"
-                Margin="160, 130, 0, 0"/>
+                Margin="160, 135, 0, 0"/>
             <Label x:Name="emailBox"
                    VerticalAlignment="Top"
                    HorizontalAlignment="Left"
                    Style="{DynamicResource ListsText}"
                    Content="{DynamicResource EmptyBox}"
-                   Margin="250, 130, 0, 0"
+                   Margin="250, 135, 0, 0"
                    MaxWidth="450"/>
             <Button
                 x:Name="backBut"
@@ -142,9 +142,9 @@
                    Visibility="Collapsed"
                    HorizontalAlignment="Center"
                    Margin="0,253,0,0"/>
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="30, 210, 30, 0" >
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="30, 200, 30, 0" >
                 <ItemsControl x:Name="ImageArea" MouseDown="ImageArea_MouseDown"
-                              BorderBrush="Black" BorderThickness="1">
+                   BorderBrush="Black" BorderThickness="1">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel Orientation="Horizontal" />
@@ -157,13 +157,6 @@
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
-                    <Button x:Name="AddImageButton"
-                            Content="{DynamicResource AddImageText}"
-                            Visibility="Collapsed"
-                            Margin="10" Width="100" Height="100" 
-                            Cursor="Hand"
-                            FontSize="12"
-                            Click="AddImage_Click"/>
                 </ItemsControl>
             </ScrollViewer>
 
@@ -193,7 +186,6 @@
                 Margin="640,370,50,50" 
                 Click="DeleteImage_Click"
                 Visibility="Collapsed"/>
-
         </Grid>
     </Viewbox>
 </Page>

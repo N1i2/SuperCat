@@ -7,8 +7,8 @@ using System.Windows.Media.Imaging;
 using SuperCat.GlobalFanc;
 using SuperCat.Pages.FriendFile;
 using System.Windows.Input;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Immutable;
+using SuperCat.Pages.ChatsList;
+using SuperCat.Pages.Group;
 
 
 namespace SuperCat.Lists
@@ -21,6 +21,7 @@ namespace SuperCat.Lists
         private UserInfo user;
         private List<MyImage> images;
         private AllFriends allFriends = null!;
+        private AllMyGroups groups = null!;
 
         public MyList()
         {
@@ -35,6 +36,10 @@ namespace SuperCat.Lists
             CatImage.Source = HelpWork.LoadImageFromByte(this.user.Image??new byte[0]);
             FillList();
             PaintImages();
+            if(user.Id == 1)
+            {
+                AdminMessage.Visibility = Visibility.Visible;
+            }
         }
 
         private void PaintImages()
@@ -189,6 +194,21 @@ namespace SuperCat.Lists
             }
 
             NavigationService.Navigate(allFriends);
+        }
+
+        private void GroupsButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(groups == null)
+            {
+                groups = new AllMyGroups(user);
+            }
+
+            NavigationService.Navigate(groups);
+        }
+
+        private void AdminMessage_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new GoAdminMessage());
         }
     }
 }

@@ -15,6 +15,8 @@ namespace SuperCat.MyObjects
         public string? Gender { get; set; } = null;
         public string? Email { get; set; } = null;
         public byte[]? Image { get; set; } = null;
+        public string GroupsInclude { get; set; } = string.Empty;
+        public string GroupsThink { get; set; } = string.Empty;
 
         public UserInfo()
         {
